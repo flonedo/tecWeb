@@ -7,10 +7,8 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link  rel = "stylesheet" type="text/css" href="small.css" media= "handheld, screen and (max-width:480px)" />
-		<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen and(min-width:1080px), only screen and (max-width-device:1080px)"/>
-		<link rel = "stylesheet" type="text/css"  href="print.css" media="print"/>
+	<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen"/>
+	<link  rel = "stylesheet" type="text/css" href="small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />		<link rel = "stylesheet" type="text/css"  href="print.css" media="print"/> 
      </head>
      <body>
      <div id="header">
