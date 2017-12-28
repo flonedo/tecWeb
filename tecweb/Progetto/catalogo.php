@@ -8,7 +8,7 @@
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
 	<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen"/>
-	<link  rel = "stylesheet" type="text/css" href="small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />		<link rel = "stylesheet" type="text/css"  href="print.css" media="print"/> 
+	<link  rel = "stylesheet" type="text/css" href="style/small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />		<link rel = "stylesheet" type="text/css"  href="style/print.css" media="print"/> 
      </head>
      <body>
      <div id="header">
