@@ -87,7 +87,7 @@
                                     '<p id="annoP" class="info"> <span class="grass"> Anno di pubblicazione: </span>'.$resultInfo["annoPubblicazione"].'</p>'.
                                     '<p id="zona" class="info"> <span class="grass"> Il venditore si trova in zona: </span>'.$resultInfo["citta"].'</p>'.
                                     '</div>';
-                     if($resultInfo[note]!=NULL){
+                     if($resultInfo["note"]!=NULL){
                      	$output = $output. '<p id="note" class="info"> <span class="grass"> Note del venditore: </span>'.$resultInfo["note"].'</p>';
                      }
                      echo $output.'<button type="button" onclick="showDetails()"> Vedi i dettagli del venditore </button> 
