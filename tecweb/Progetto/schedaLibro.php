@@ -65,19 +65,19 @@
             //vado ad eseguire la query per avere i dati del libro SENZA i generi ad esso associato
             $resultInfo = $infoL -> getInfoLibro($connection, $id);
             //Mi prelevo le informazioni relative al venditore
-            $infoVenditre = $infoL -> getInfoVenditore($resultInfo["username"], $connection);
-            if(!$infoVenditre){
+            $infoVenditore = $infoL -> getInfoVenditore($resultInfo["username"], $connection);
+            if(!$infoVenditore){
             	echo "<p> Errore nel trovare i risultati dell'utente </p>";
             }
             else{
                   //creo i cookie relativi all'infoVenditore
-           		 $infoL -> setCookie($infoVenditre);
+           		 $infoL -> setCookie($infoVenditore);
             }
 
             //Vado a stampare le informazioni del libro
             if($resultInfo){
                 	$output =  '<h1>'.$resultInfo["titolo"].'</h1>'.
-                                    '<img src="images/'.$resultInfo["foto"].'" id="fotoLibro" alt="La foto del libro '.$resultInfo["titolo"].'"/>'.
+                                    '<img src="photo/'.$resultInfo["foto"].'" id="fotoLibro" alt="La foto del libro '.$resultInfo["titolo"].'"/>'.
                                     '<div id="infoL">'.
                     				'<p id="ISBN" class="info"> <span class="grass"> ISBN: </span>'.$resultInfo["ISBN"].'</p>'.
                                     '<p id="autore" class="info"> <span class="grass"> Autore: </span>'.$resultInfo["autore"].'</p>'.
@@ -102,8 +102,6 @@
                         <button type="button" onclick="closeDetails()"> Chiudi dettagli </button>
                         </div>
                      ';
-                                    
-                
             }
             else{
             	echo "<p> Non ci sono informazioni da visualizzare </p>";

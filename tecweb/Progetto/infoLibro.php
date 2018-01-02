@@ -3,7 +3,8 @@
     	//questa funzione mi da tutte le informazioni riguardanti il libro TRANNE i generi a lui associati in quanto 
     	public function getInfoLibro($connection, $codiceLibro){
         	//la query che devo andare a fare è la seguente
-            $query = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN genereLibro gl ON c.codiceLibro = gl.codiceLibro JOIN genere g ON gl.idGenere=g.id JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
+            $query = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
+			$queryConGenere = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN genereLibro gl ON c.codiceLibro = gl.codiceLibro JOIN genere g ON gl.idGenere=g.id JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
             //Provo ad andare ad eseguire la query
             $risultato = mysqli_query($connection, $query) or die("Non è stato possibile trovare le informazioni, ci scusiamo per il diagio");
             if(mysqli_num_rows($risultato)>0){ 

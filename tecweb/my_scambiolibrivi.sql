@@ -30,7 +30,8 @@ INSERT INTO `utente` (`username`, `password`, `nome`, `cognome`, `citta`, `provi
 ('fra93', 'Tsuki', 'Francesca', 'Lonedo', 'Vicenza', 'VI', 'lonedofrancesca@gmail.com', ''),
 ('Marco96', 'Pippo', 'Marco', 'Giollo', 'Vicenza', 'VI', 'gmarco@gmail.com', ''),
 ('Luca', 'pluto', 'Luca', 'Allegro', 'Grisignano di Zocco', 'VI', 'aluca@gmail.com', '1234556'),
-('Ciao', 'CiaoCioa', 'MioNome', 'MioCognome', 'MiaCitta', 'MiaProvincia', 'lamiamail@gmail.com', ' ');
+('Ciao', 'CiaoCioa', 'MioNome', 'MioCognome', 'MiaCitta', 'MiaProvincia', 'lamiamail@gmail.com', ''),
+('user','user','user','user','user','user','user@user.user','');
 
 -- ------------------------------------------------------------------------------------------------------------------------
 
@@ -153,7 +154,8 @@ CREATE TABLE IF NOT EXISTS `copiaLibro` (
   `note` varchar(160),
   `foto` varchar(30)  DEFAULT 'noImage.jpg',
   PRIMARY KEY (`codiceLibro`),
-  FOREIGN KEY(ISBN) REFERENCES libro(ISBN) ON DELETE NO ACTION
+  FOREIGN KEY(ISBN) REFERENCES libro(ISBN) ON DELETE NO ACTION,
+  FOREIGN KEY(proprietario) REFERENCES utente(username) ON DELETE NO ACTION
 ); 
 
 --
