@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
-	<title> Home - ScambioLibriVi </title>
+	<title> Modifica Profilo - ScambioLibriVi </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
@@ -35,7 +35,7 @@
 	</div>
   </div>
   	 <div id="where">
-        <p> Ti trovi in: <a href="index.html" title="Torna alla pagina iniziale" > Home </a> - Modifica Utente </p>
+        <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Modifica Profilo </p>
      </div>
      <div id="corpo">
         <?php
@@ -52,25 +52,34 @@
                 $query="SELECT * FROM utente WHERE username=\"$user\";";
                 $result=$connection->query($query);
                 $row = $result->fetch_assoc();
+                $psw = $row['password'];
                 $citta=$row['citta'];
                 $provincia=$row['provincia'];
                 $email=$row['email'];
                 $numeroT=$row['numeroTelefono'];
             }
          ?>
+         <h1> Modifica Dati Utente</h1>
+         <p> Modifica i dati che vuoi cambiare, quelli non modificati rimarranno invariati</p><br/>
           <form id="registerForm" action="actionModProf.php"  method="post">
          	<fieldset>
             	<legend> Modifica Utente </legend>
-                <!--Inserimento Usurname -->
-                <label> Citt&agrave; </label><br/>
-                <input class="inputText" name="citt" type="text" title="Modifica la città" value=<?php echo "\"$citta\"" ?>> <br/>
-                <!--Inserimento Provincia -->
+                <!--Modifica Password -->
+                <label> Nuova Password </label><br/>
+                <input class="inputText" name="psw" type="password" title="Modifica la password" value=<?php echo "\"$psw\"" ?>> <br/>
+                <!--Conferma Password -->
+                <label> Conferma Nuova Password </label><br/>
+                <input class="inputText" name="psw" type="password" title="Ripeti la password" value=<?php echo "\"$psw\"" ?>> <br/>
+                <!--Modifica Città -->
+                <label> Citt&agrave;  <br/>
+                <input  class="inputText" name="citta" type="text" title="Modifica la citt&agrave;" value=<?php echo "\"$citta\"" ?> /> <br/>
+                <!--Modifica Provincia -->
                 <label> Provincia  <br/>
                 <input  class="inputText" name="prov" type="text" title="Modifica la provincia" value=<?php echo "\"$provincia\"" ?> /> <br/>
-                <!--Inserimento email -->
+                <!--Modifica email -->
                 <label> Email </label> <br/>
                 <input class="inputText" name="em" type="text" title="Inserisci la tua mail" value=<?php echo "\"$email\"" ?>/> <br/>
-                <!--Inserimento numero di telefono opzionale -->
+                <!--Modifica numero di telefono opzionale -->
                 <label> Numero di Telefono </label> <br/>
                 <input class="inputText" name="tel" type="text" title="Modifica il tuo numero di telefono" value=<?php echo "\"$numeroT\"" ?>/><br/>
                 <!--Tasto per inviare i dati -->

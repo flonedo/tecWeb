@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
-	<title> Registrazione - ScambioLibriVi </title>
+	<title> Inserimento Libri - ScambioLibriVi </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
@@ -34,16 +34,8 @@
 	</div>
   </div>
   	 <div id="where">
-        <p> Ti trovi in: <a href="index.php"> Home </a> - Aggiungi Libro </p>
+        <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Aggiungi Libro </p>
      </div>
-     <div id = "menu">
-        <ul>
-            <li id="current">  <a hred="index.php"> <span xml:lang="en"> Home </span> </a> </li>
-            <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
-        </ul>
-    </div>
     <div id="corpo">
         <?php
         session_start();
@@ -66,14 +58,8 @@
             $price=$_POST["price"];
             $state=$_POST["state"];
             $note=$_POST["note"];
-            $connessione->query("INSERT INTO `libro` (`titolo`, `autore`, `casaEditrice`, `ISBN`, `annoPubblicazione`) VALUES('$title', '$author', '$editor', '$isbn', $year);");
-            $r=$connessione->query("INSERT INTO `copiaLibro` (`ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES('$isbn', '$user', $price, '$state', '$note', 'noImage.jpg');"); 
-            echo "Il libro &egrave stato inserito correttamente";
-            $id = $connessione->insert_id;
-            $target_dir = "photo/";
-            $target_file = $target_dir.$id.".jpg";
+            
             $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
             if(isset($_POST["submit"])) {
                 $check = getimagesize($_FILES["photo"]["tmp_name"]);
@@ -85,20 +71,26 @@
                 }
             }
             // Check file size
-            if ($_FILES["photo"]["size"] > 500000) {
-                echo "Sorry, your file is too large.";
+            if ($_FILES["photo"]["size"] > 1500000) {
+                echo "La dimensione massima &egrave; 2 MB. Prova con un file di dimensione inferiore";
                 $uploadOk = 0;
             }
             // Allow only jpg
-            if($imageFileType != "jpg") {
-                echo "Sorry, only JPG files are allowed.";
+            $allowed =  array('jpeg' ,'jpg');
+            $ext = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
+            if(!in_array($ext,$allowed) ) {
+                echo $imageFileType;//"Sorry, only JPG files are allowed.";
                 $uploadOk = 0;
             }
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 1 && move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+            if ($uploadOk == 1) {
+                $connessione->query("INSERT INTO `libro` (`titolo`, `autore`, `casaEditrice`, `ISBN`, `annoPubblicazione`) VALUES('$title', '$author', '$editor', '$isbn', $year);");
+                $r=$connessione->query("INSERT INTO `copiaLibro` (`ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES('$isbn', '$user', $price, '$state', '$note', 'noImage.jpg');");
+                $id = $connessione->insert_id;
+                $target_dir = "photo/";
+                $target_file = $target_dir.$id.".jpg";
+                move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
                 $r=$connessione->query("UPDATE `copiaLibro` SET foto= '$id.jpg' WHERE codiceLibro='$id';");
-            } else {
-                echo "ma non &egrave stato possibile inserire l'immagine";
+                echo "<p>Il libro &egrave stato inserito correttamente</p>";
             }
         }
         ?>    

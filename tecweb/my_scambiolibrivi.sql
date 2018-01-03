@@ -126,7 +126,8 @@ CREATE TABLE IF NOT EXISTS `genereLibro` (
   `codiceLibro` int(11) NOT NULL,
   `idGenere` int(11) NOT NULL,
   PRIMARY KEY (`codiceLibro`,`idGenere`),
-  FOREIGN KEY (idGenere) REFERENCES genere(id) ON DELETE CASCADE
+  FOREIGN KEY (idGenere) REFERENCES genere(id) ON DELETE CASCADE,
+  FOREIGN KEY(codiceLibro) REFERENCES copiaLibro(codiceLibro) ON DELETE CASCADE;
 ) ;
 
 --
@@ -155,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `copiaLibro` (
   `foto` varchar(30)  DEFAULT 'noImage.jpg',
   PRIMARY KEY (`codiceLibro`),
   FOREIGN KEY(ISBN) REFERENCES libro(ISBN) ON DELETE NO ACTION,
-  FOREIGN KEY(proprietario) REFERENCES utente(username) ON DELETE NO ACTION
+  FOREIGN KEY(proprietario) REFERENCES utente(username) ON DELETE CASCADE
 ); 
 
 --

@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
-	<title> Registrazione - ScambioLibriVi </title>
+	<title> Elimina Libri - ScambioLibriVi </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
@@ -34,18 +34,10 @@
 	</div>
   </div>
   	 <div id="where">
-        <p> Ti trovi in: <a href="index.php"> Home </a> - Aggiungi Libro </p>
+        <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Elimina Libro </p>
      </div>
-     <div id = "menu">
-        <ul>
-            <li id="current">  <a hred="index.php"> <span xml:lang="en"> Home </span> </a> </li>
-            <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
-        </ul>
-    </div>
     <div id="corpo">
-        <h1>Seleziona i libri da eliminare</h1>
+        <h1>Elimina i tuoi libri</h1>
         <?php
         session_start();
         require_once 'connectDB.php';
@@ -55,12 +47,24 @@
         	die("Errore nell'aprire il database");
         }
         else{
-        	require_once 'connectRegister.php';
             $connessione= $reg -> getConnection();
             //creo un nuovo oggetto per eseguire la query nel database
             $user=$_SESSION["user"];
-            $r=$connessione-> query("SELECT * FROM libro l INNER JOIN copialibro c ON (l.ISBN=c.ISBN) WHERE c.proprietario='$user';")
-            
+            $result=$connessione-> query("SELECT l.titolo,l.autore,c.codiceLibro AS cl FROM libro l INNER JOIN copialibro c ON (l.ISBN=c.ISBN) WHERE c.proprietario='$user' ORDER BY c.codiceLibro;");
+            if($result->num_rows ==0)
+                echo '<p>Non hai libri presenti</p>';
+            else{
+                echo "<p>Seleziona i libri che vuoi eliminare</p>"
+                    ."<form action=\"actionEliminaLibro.php\" method=\"post\">"
+                    ."<ul class=\"delBook\">";
+                while($row=mysqli_fetch_assoc($result)){
+                    $cl=$row['cl'];
+                    $title=$row['titolo'];
+                    $author=$row['autore'];
+                    echo "<li><input type=\"checkbox\" name=\"$cl\" value=\"del\">$title di $author</input></li>";
+                }
+                echo "</ul><input type=\"submit\" value=\"Elimina\"/> </form>";
+            }
         }
         ?>    
     </div>

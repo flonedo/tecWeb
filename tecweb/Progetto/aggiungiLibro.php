@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
-	<title> Registrazione - ScambioLibriVi </title>
+	<title> Aggiungi Libro - ScambioLibriVi </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
@@ -34,16 +34,8 @@
 	</div>
   </div>
   	 <div id="where">
-        <p> Ti trovi in: <a href="index.php"> Home </a> - Aggiungi Libro </p>
+        <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Aggiungi Libro </p>
      </div>
-     <div id = "menu">
-        <ul>
-            <li id="current">  <a href="index.php"> <span xml:lang="en"> Home </span> </a> </li>
-            <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
-        </ul>
-    </div>
     <div id="corpo">
         <h1> Aggiungi un libro </h1>
         <form id="addBookForm" action="actionAggiungiLibro.php"  method="post" enctype="multipart/form-data">

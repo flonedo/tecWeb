@@ -7,7 +7,7 @@
 ?> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
-	<title> Area Personale - ScambioLibri </title>
+	<title> Area Riservata - ScambioLibri </title>
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
@@ -28,6 +28,9 @@
      </div>
      </div>
      <div id="corpo">
+    <div id="where">
+        <p> Ti trovi in: <a href="index.php"> Home </a> - Area Riservata </p>
+     </div>
      <!--Corpo della pagina -->
      <h1> Il tuo profilo </h1>
      	<a href="modProf.php" class= "abutt"> Modifica il tuo profilo </a> <br/>
