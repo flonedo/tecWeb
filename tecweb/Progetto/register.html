@@ -18,33 +18,32 @@
      <div id="titolo">
 		 <h1> Scambio Libri VI </h1>
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
-     </div>
-     
-     <div id="logForm" method ="post" action="actionLogin.php">
-         <form id="loginForm">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-            </fieldset>
-         </form>
-	</div>
+         <a href="index.php" class="aiuti">Torna alla pagina principale </a>
+         <a href="#registerForm" class="aiuti">Passa alla form di registrazione </a>
+         <a href="#menu" class="aiuti"> Vai al menu</a>
+        </div>
+        
   </div>
   	 <div id="where">
+        <a href="#menu" class="aiuti"> Vai al menu</a>
+        <a href="#corpo" class="aiuti">Vai al contenuto della pagina </a>
+        <a href="#registerForm" class="aiuti">Passa alla form di registrazione </a>
+        <a href="index.php" class="aiuti">Torna alla pagina principale </a>
         <p> Ti trovi in: <a href="index.php" title="Torna alla pagina iniziale" > Home </a> - Registrati </p>
      </div>
      <div id="corpo">
-    
     	<h1> Registrati al nostro sito per poter scambiare i tuoi libri </h1>
         <form id="registerForm" action="actionRegister.php"  method="post" onsubmit="return correctForm()">
          	<fieldset>
             	<legend> Registrazione </legend>
+                <!-- Per un discorso di accessibilità devo mettere le informazioni relative ai campi obbligatori all'inizio della form -->
+                <p  id="note" class="request">  (*) Campo obbligatorio. </p>
                 <!--Inserimento Usurname -->
-                <label> Username <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
-                <input class="inputText" name="us" type="text" title="Inserisci User" onkeyup="showIsPossible(this.value)"/> <br/>
+                <label> Username <span class="request"  title="campo obbligatorio" > * </span> </label> <br/>
+                <input id="username" class="inputText" name="us" type="text" title="Inserisci User" onkeyup="showIsPossible(this.value)"/> <br/>
+                <span id="presente"></span> <br/>
+                <!-- Inserisco un aiuto alla navigazione che permetta di tornare facilmente ad inserire un nuovo usurname -->
+                <a id="aiutoUsername" class="aiuti" href="#username">Cambia username</a>
                 <!--Inserimento Password -->
                 <label> Password <span class="request"  title="campo obbligatorio"> * </span> </label> <br/>
                 <input class="inputPassword" name="psw" type="password" title="Inserici la password"/> <br/>
@@ -62,16 +61,14 @@
                 <input  class="inputText" name="prov" type="text" title="Inserisci la provincia"/> <br/>
                 <!--Inserimento email -->
                 <label> Email <span class="request"  title="campo obbligatorio"> * </span> </label> <br/>
-                <input class="inputText" name="em" type="text" title="Inserisci la tua mail"/> <br/>
+                <input class="inputText" name="em" type="email" title="Inserisci la tua mail"/> <br/>
                 <!--Inserimento numero di telefono opzionale -->
-                <label> Numero di Telefono </label> <br/>
+                <label> Numero di Telefono </label><p class="aiuti">Campo non obbligatorio, se non vuoi inserirlo</p> <a href="#submit" class="aiuti"> passa al bottone di invio</a><br/>
                 <input class="inputText" name="tel" type="text" title="Inserisci il tuo numero di telefono"/><br/>
                 <!--Tasto per inviare i dati -->
-                <input id="submit" type="submit" value="Conferma" title="Clicca per confermare" /><br/>
-                <p  id="note" class="request">  (*) Campo obbligatorio. </p>
+                <input id="submit" class="abutt" type="submit" value="Conferma" title="Clicca per confermare" /><br/>
             </fieldset>
          </form>
-         
     </div>
     <div id="footer">
     	 <img id="imgValidCode" src="images/valid-xhtml10.png" alt="Html validation"/>

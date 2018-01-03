@@ -39,12 +39,18 @@
  function showIsPossible(str){
     if (str.length == 0) { 
       document.getElementById("presente").innerHTML = "";
+       document.getElementById("aiutoUsername").style.display="none";  
       return;
     }
  	var xmlhttp = new XMLHttpRequest();
   	xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      	document.getElementById("presente").innerHTML = this.responseText;
+        if(this.responseText != " "){
+            document.getElementById("presente").innerHTML = this.responseText;
+            //devo attivare l'aiuto alla navigazione
+            document.getElementById("aiutoUsername").style.display="block";
+        }
+      	
     }
   };
   xmlhttp.open("GET", "register.php?q=" +str , true);

@@ -1,6 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<?php
+    session_start();
+      if(!isset($_SESSION["user"])){
+    	header("Location:index.php");
+    }
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
 	<title> Inserimento Libri - ScambioLibriVi </title>
@@ -19,19 +25,8 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
      
-     <div id="logForm">
-         <form id="loginForm">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-            </fieldset>
-         </form>
-	</div>
+      <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
+        
   </div>
   	 <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Aggiungi Libro </p>

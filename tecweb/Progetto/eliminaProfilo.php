@@ -1,5 +1,5 @@
 <?php
-	session_start();
+    session_start();
     //Controllo che sia stato fatto il login in precedenza
      if(!isset($_SESSION["user"])){
     	header("Location:index.php");
@@ -20,10 +20,9 @@
      <div id="titolo">
 		 <h1> Scambio Libri VI </h1>
 		 <h2> La pagina personale di <span id="nome" >Marco96</span> </h2>     </div>
-     <div id="logOut">
-     	<a href="logout.php"> Logout </a>
+    <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
      </div>
-     </div>
+         
      <div id="corpo">
     <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Elimina Profilo </p>

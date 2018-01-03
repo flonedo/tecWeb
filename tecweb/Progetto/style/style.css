@@ -5,6 +5,7 @@
 */
 html{
 	background-color: SteelBlue ;
+       
 }
 
 *{
@@ -42,23 +43,31 @@ SEZIONE HEADER
     text-decoration: none;
     color: white;
     margin-top:0.3em;
-    border: solid 1px blue;
+    border: solid 1px white;
     background: #0095cd;
+    padding:0.3em;
 }
+
 #loginForm{
-	font-size: 0.7em;
+font-size: 0.7em;
 	margin-left:0em;
     width:6em;
 }
 
 #loginForm fieldset {
-	border-color:#3333ff;
+	border-color:white;
     margin:0.3em;
     padding:1em;
+    background-color: SteelBlue;
 }
 
+#loginForm legend{
+    background-color: SteelBlue;
+    color:white;
+}
 #loginForm label{
 	line-height: 1.5em;
+    color:white;
 }
 
 #invioLogin{
@@ -67,8 +76,9 @@ SEZIONE HEADER
 
 #header{
     overflow:auto;
-    background-color:lightBlue;
+    /*background-color:lightBlue;*/
     padding-left: 1.5em;
+    background-image: url(sfondo.jpg);
 }
 
 #titolo{
@@ -80,6 +90,7 @@ SEZIONE HEADER
 	font-size: 3em;
     display:block;
     float:left;
+
 }
 
 #titolo h2{
@@ -97,6 +108,18 @@ SEZIONE HEADER
 #nome{
 	font-style: italic;
     color: red;
+}
+
+#aPers{
+    margin-left:71%;
+    padding-bottom: 0.3em;
+    width:15em;
+}
+
+#logout{
+    margin-left:71%;
+    padding-bottom: 0.3em;
+    width:15em;
 }
 
 /*
@@ -180,11 +203,20 @@ SEZIONE menu
     border-left: 1px solid #3333ff;
 }
 
+
 /*
 =========================
 SEZIONE CORPO
 ========================
 */
+
+
+
+textarea{
+    height: 200px;
+    width: 320px;
+    overflow: hidden;
+}
 
 #confel{
 	margin-bottom:1em;
@@ -477,6 +509,18 @@ button{
   padding-top: 0.3em;
   padding-bottom: 0.3em;
 }
+
+.aiuti{
+    position: absolute;
+    height:0;
+    overflow:hidden;
+}
+
+#aiutoUsername{
+    display: none;
+}
+
+
 /*
 =========================
 SEZIONE FOOTER

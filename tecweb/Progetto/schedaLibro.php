@@ -20,20 +20,28 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
      
-     <div id="logForm">
-         <form id="loginForm" method="post" action="actionLogin.php">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input  name="us" type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input name="psw" type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-            </fieldset>
-         </form>
-	</div>
-  </div>
+      <?php
+        session_start();
+          if(!isset($_SESSION["user"])){
+            echo'    <div id="logForm">
+                 <form id="loginForm" method="post" action="actionLogin.php">
+                    <fieldset>
+                        <legend> Login Area </legend>
+                        <label> User  </label> <br/>
+                        <input  name="us" type="text" title="Inserisci User"/> <br/>
+                        <label> Password </label> <br/>
+                        <input name="psw" type="password" title="Inserici la password"/> <br/>
+                        <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
+                        <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
+                    </fieldset>
+                 </form>
+            </div>';
+          }
+        else
+            echo '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
+                  <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>'
+     ?>
+</div>
   	 <div id="where">
         <p> Ti trovi in: Scheda del libro </p>
      </div>

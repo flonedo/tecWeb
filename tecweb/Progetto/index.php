@@ -1,5 +1,11 @@
+<!---NB: Sono già stati inseriti alcuni aiuti alla navigazione -->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<?php 
+    session_start();
+?>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
@@ -7,9 +13,9 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="title" content="Scambio Libri Vi" />
         <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
-	<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen"/>
-	<link  rel = "stylesheet" type="text/css" href="style/small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />
-	<link rel = "stylesheet" type="text/css"  href="style/print.css" media="print"/> 
+		<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen"/>
+		<link  rel = "stylesheet" type="text/css" href="style/small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />
+		<link rel = "stylesheet" type="text/css"  href="print.css" media="print"/> 
      </head>
      <body>
      
@@ -17,33 +23,48 @@
      <div id="titolo">
 		 <h1> Scambio Libri VI </h1>
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
+        <a href="#logForm" class="aiuti">Passa al form di login</a>
+        <a href="#menu" class="aiuti">Passa al men&ugrave;</a>
+        <a href="#divSfo" class="aiuti"> Passa al contenuto della pagina</a>
+        <a href="#novita" class="aiuti"> Passa alle novit&agrave;</a>
+        <a href="register.html" class="aiuti"> Passa alla pagina di registrazione </a>
      </div>
      
-     <div id="logForm">
-         <form id="loginForm" method="post" action="actionLogin.php">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input  name="us" type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input name="psw" type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-            </fieldset>
-         </form>
-	</div>
+    <?php
+          if(!isset($_SESSION["user"])){
+            echo'    <div id="logForm">
+                 <form id="loginForm" method="post" action="actionLogin.php">
+                    <fieldset>
+                        <legend> Login Area </legend>
+                        <label> User  </label> <br/>
+                        <input  name="us" type="text" title="Inserisci User"/> <br/>
+                        <label> Password </label> <br/>
+                        <input name="psw" type="password" title="Inserici la password"/> <br/>
+                        <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
+                        <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
+                    </fieldset>
+                 </form>
+            </div>';
+          }
+        else
+            echo '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
+                  <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>'
+     ?>
   </div>
   	 <div id="where">
         <p> Ti trovi in: Home </p>
      </div>
      <div id = "menu">
-        <ul>
+        <p class="aiuti"> <a href="#el">Leggi men&ugrave;</a> oppure <a href="#novita" class="aiuti"> Passa alle novit&agrave;</a>
+        <a href="register.html" class="aiuti"> Passa alla pagina di registrazione </a> </p>
+        <ul id="el">
             <li id="current">  <span xml:lang="en"> Home </span>  </li>
             <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
             <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.php"> Catalogo </a> </li>
+            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
         </ul>
     </div>
+
     <div id="divSfo">
     <h1> I pi&ugrave; cercati..</h1>
     <a href="elencoTitoli.php?id=23" title="Clicca per vedere i libri di narattiva"> Narrativa </a> <br/>

@@ -1,6 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?php
+  session_start();
+  if(!isset($_SESSION["user"])){
+    	header("Location:index.php");
+    }
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>   
 	<title> Aggiungi Libro - ScambioLibriVi </title>
@@ -19,19 +24,8 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
      
-     <div id="logForm">
-         <form id="loginForm">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-            </fieldset>
-         </form>
-	</div>
+     <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
+        
   </div>
   	 <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Aggiungi Libro </p>
@@ -41,6 +35,7 @@
         <form id="addBookForm" action="actionAggiungiLibro.php"  method="post" enctype="multipart/form-data">
          	<fieldset>
             	<legend> Aggiunta nuovo libro </legend>
+                <p  id="note" class="request">  (*) Campo obbligatorio. </p>
                 <!--Inserimento ISBN -->
                 <label> codice ISBN <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
                 <input class="inputText" name="isbn" type="text" title="Inserisci ISBN"/> <br/>
@@ -65,13 +60,14 @@
                 <input class="inputText" name="state" type="text" title="Inserisci Stato"/> <br/>
                 <!--Inserimento Note -->
                 <label> Note </label> <span id="presente"></span> <br/>
-                <input class="inputText" name="note" type="text" title="Inserisci Note "/> <br/>
+                <textarea name="note" title="InserisciNote"> </textarea>
+                <!-- <input class="inputText" name="note" type="text" title="Inserisci Note "/> --><br/>
                 <!--Inserimento Foto -->
                 <label> Foto del libro  </label> <span id="presente"></span> <br/>
                 <input class="inputText" name="photo" type="file" title="Inserisci Foto "/> <br/>
                 
                 <input id="submit" type="submit" value="Conferma" title="Clicca per confermare" /><br/>
-                <p  id="note" class="request">  (*) Campo obbligatorio. </p>
+                
             </fieldset>
          </form>
          

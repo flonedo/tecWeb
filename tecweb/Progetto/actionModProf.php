@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+  if(!isset($_SESSION["user"])){
+    	header("Location:index.php");
+    }
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,18 +25,8 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
      
-     <div id="logForm" method ="post" action="actionLogin.php">
-         <form id="loginForm">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-            </fieldset>
-         </form>
-	</div>
+    <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
+        
   </div>
   	 <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Modifica Profilo </p>
@@ -56,7 +50,9 @@
                 $connection = $log -> getConnection();
                 $query="UPDATE utente SET password=\"$psw\", citta=\"$citta\", provincia=\"$provincia\", email=\"$email\", numeroTelefono=\"$tel\" WHERE username=\"$user\";";
                 if($connection->query($query))
-                    echo "Aggiornamento avvenuto con successo";
+                    echo '<h1> Aggiornamento avvenuto con successo! </h1>
+                        <p> Torna alla tua <a href="userHome.php" title="Pagina personale"> pagina personale </a> </br>
+                            oppure torna alla <a href="home.php" title="home"> <span xml:lang="en"> Home </span> </a>';
                 else
                     echo "Errore!";
             }

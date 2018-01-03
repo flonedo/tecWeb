@@ -23,9 +23,7 @@
          	echo '<h2> La pagina personale di <span id="nome" >'. $_SESSION["user"].'</span> </h2>';
          ?>
      </div>
-     <div id="logOut">
-     	<a href="logout.php"> Logout </a>
-     </div>
+        <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
      </div>
      <div id="corpo">
     <div id="where">

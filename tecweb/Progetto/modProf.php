@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+  session_start(); 
+  if(!isset($_SESSION["user"])){
+    	header("Location:index.php");
+    }
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -21,18 +26,7 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
      
-     <div id="logForm" method ="post" action="actionLogin.php">
-         <form id="loginForm">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-            </fieldset>
-         </form>
-	</div>
+      <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>
   </div>
   	 <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home </a> - <a href="userHome.php"> Area Riservata </a> - Modifica Profilo </p>
@@ -60,21 +54,21 @@
             }
          ?>
          <h1> Modifica Dati Utente</h1>
-         <p> Modifica i dati che vuoi cambiare, quelli non modificati rimarranno invariati</p><br/>
+         <p> Modifica i dati che vuoi cambiare, quelli non modificati rimarranno invariati</p>
           <form id="registerForm" action="actionModProf.php"  method="post">
          	<fieldset>
             	<legend> Modifica Utente </legend>
                 <!--Modifica Password -->
                 <label> Nuova Password </label><br/>
-                <input class="inputText" name="psw" type="password" title="Modifica la password" value=<?php echo "\"$psw\"" ?>> <br/>
+                <input class="inputText" name="psw" type="password" title="Modifica la password" value=<?php echo "\"$psw\"" ?>/> <br/>
                 <!--Conferma Password -->
                 <label> Conferma Nuova Password </label><br/>
-                <input class="inputText" name="psw" type="password" title="Ripeti la password" value=<?php echo "\"$psw\"" ?>> <br/>
+                <input class="inputText" name="psw" type="password" title="Ripeti la password" value=<?php echo "\"$psw\"" ?> /> <br/>
                 <!--Modifica Città -->
-                <label> Citt&agrave;  <br/>
+                <label> Citt&agrave;  </label><br/>
                 <input  class="inputText" name="citta" type="text" title="Modifica la citt&agrave;" value=<?php echo "\"$citta\"" ?> /> <br/>
                 <!--Modifica Provincia -->
-                <label> Provincia  <br/>
+                <label> Provincia  </label><br/>
                 <input  class="inputText" name="prov" type="text" title="Modifica la provincia" value=<?php echo "\"$provincia\"" ?> /> <br/>
                 <!--Modifica email -->
                 <label> Email </label> <br/>
@@ -83,7 +77,7 @@
                 <label> Numero di Telefono </label> <br/>
                 <input class="inputText" name="tel" type="text" title="Modifica il tuo numero di telefono" value=<?php echo "\"$numeroT\"" ?>/><br/>
                 <!--Tasto per inviare i dati -->
-                <input id="submit" type="submit" value="Conferma" title="Conferma le modifiche" /><br/>
+                <input id="submit" calss="abutt" type="submit" value="Conferma" title="Conferma le modifiche"/><br/>
             </fieldset>
          </form>
     </div>

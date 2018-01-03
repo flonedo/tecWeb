@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?php
+    session_start();
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
     <head>
 	<title> Home - ScambioLibriVi </title>
@@ -18,19 +20,27 @@
 		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
      </div>
 
-        <div id="logForm">
-         <form id="loginForm" method="post" action="actionLogin.php">
-         	<fieldset>
-            	<legend> Login Area </legend>
-                <label> User  </label> <br/>
-                <input  name="us" type="text" title="Inserisci User"/> <br/>
-                <label> Password </label> <br/>
-                <input name="psw" type="password" title="Inserici la password"/> <br/>
-                <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-            </fieldset>
-         </form>
-	</div>
+      <?php
+          if(!isset($_SESSION["user"])){
+            echo'    <div id="logForm">
+                 <form id="loginForm" method="post" action="actionLogin.php">
+                    <fieldset>
+                        <legend> Login Area </legend>
+                        <label> User  </label> <br/>
+                        <input  name="us" type="text" title="Inserisci User"/> <br/>
+                        <label> Password </label> <br/>
+                        <input name="psw" type="password" title="Inserici la password"/> <br/>
+                        <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
+                        <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
+                    </fieldset>
+                 </form>
+            </div>';
+          }
+        else
+            echo '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
+                  <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>'
+     ?>
+         
   </div>
   	 <div id="where">
         <p> Ti trovi in: <a href="index.php"> Home</a> - <a href="catalogo.php"> Catalogo</a> - Elenco Titoli </p>
