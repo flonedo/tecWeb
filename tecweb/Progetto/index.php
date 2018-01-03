@@ -59,9 +59,9 @@
         <a href="register.html" class="aiuti"> Passa alla pagina di registrazione </a> </p>
         <ul id="el">
             <li id="current">  <span xml:lang="en"> Home </span>  </li>
-            <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
+            <li class="centrali">  <a href="chisiamo.php">Chi Siamo </a></li>
+            <li class="centrali">  <a href="contact.php"> Contattaci </a> </li>
+            <li class="ultimo"> <a href="catalogo.php"> Catalogo </a> </li>
         </ul>
     </div>
 

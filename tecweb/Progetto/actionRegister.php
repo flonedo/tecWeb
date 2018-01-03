@@ -39,9 +39,9 @@
      <div id = "menu">
         <ul>
             <li id="current">  <a hred="index.php"> <span xml:lang="en"> Home </span> </a> </li>
-            <li class="centrali">  <a href="chisiamo.html">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.html"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.html"> Catalogo </a> </li>
+            <li class="centrali">  <a href="chisiamo.php">Chi Siamo </a></li>
+            <li class="centrali">  <a href="contact.php"> Contattaci </a> </li>
+            <li class="ultimo"> <a href="catalogo.php"> Catalogo </a> </li>
         </ul>
     </div>
     <div id="corpo">
