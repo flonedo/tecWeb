@@ -33,10 +33,10 @@
                 //vado a richiamare la funzione per accettare un nuovo utente, ricordandomi di passargli anche la connessione
                 $inserimento = $newUser -> acceptUser($connessione, $user, $password, $nome, $cognome, $citta, $provincia, $email, $tel);
                 if($inserimento){
-                    $output = $output.'<p> Registrazione avvenuta correttamente. Torna alla <a href="index.html" title="Torna alla home"> HOME </a> ed effettua il login per scambiare i tuoi libri, o prenderne di nuovi! </p>';
+                    $output = $output.'<p> Registrazione avvenuta correttamente. Torna alla <a href="index.php" title="Torna alla home"> HOME </a> ed effettua il login per scambiare i tuoi libri, o prenderne di nuovi! </p>';
                 }
                 else{
-                    $output = $output.'Si è verificato un errore, la registrazione non è avvenuta. </br> Torna alla <a href="index.html"> Home </a> oppure prova a <a href="register.html"> Registrarti nuovamente </a> </p>';
+                    $output = $output.'Si è verificato un errore, la registrazione non è avvenuta. </br> Torna alla <a href="index.php"> Home </a> oppure prova a <a href="register.html"> Registrarti nuovamente </a> </p>';
                 }
             }          
         }

@@ -6,7 +6,8 @@
               	$query = "SELECT * FROM user WHERE username='".$user."'";
                 $result = $connection->query($query);
                     //Controllo che la quesy sia stata eseguita correttamente
-                    if(mysqli_num_rows ($result ) > 0){
+                    $rows = mysqli_num_rows($result);
+                    if( $rows > 0){
                         return true;
                     }
                     else{
