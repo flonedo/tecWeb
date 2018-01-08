@@ -32,7 +32,7 @@
      
     <?php
           if(!isset($_SESSION["user"])){
-            echo'    <div id="logForm">
+            echo '<div id="logForm">
                  <form id="loginForm" method="post" action="actionLogin.php">
                     <fieldset>
                         <legend> Login Area </legend>
