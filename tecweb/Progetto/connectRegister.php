@@ -3,7 +3,7 @@
 		class acceptNewUser{     	   
         	  //Ritorna true sse l'username inserito non è presente nel database
         	  public function verifyUser($user, $connection){
-              	$query = "SELECT * FROM user WHERE username='".$user."'";
+              	$query = "SELECT * FROM utente WHERE username='".$user."'";
                 $result = $connection->query($query);
                     //Controllo che la quesy sia stata eseguita correttamente
                     $rows = mysqli_num_rows($result);
