@@ -49,5 +49,8 @@
 	$con = file_get_contents("corpo.html");
 	$con = str_replace("<!--corpo-->", $output, $con);
 	$header = str_replace("<!--titolo-->", "Catalogo - Scambio Libri Vi", $header);
+	echo $header;
+	echo $con;
+	echo $footer;
 	
 ?>
