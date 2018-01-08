@@ -1,0 +1,39 @@
+<div id="corpo">
+        <h1> Aggiungi un libro </h1>
+        <form id="addBookForm" action="actionAggiungiLibro.php"  method="post" enctype="multipart/form-data">
+         	<fieldset>
+            	<legend> Aggiunta nuovo libro </legend>
+                <p  id="note" class="request">  (*) Campo obbligatorio. </p>
+                <!--Inserimento ISBN -->
+                <label> codice ISBN <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="isbn" type="text" title="Inserisci ISBN"/> <br/>
+                <!--Inserimento itolo -->
+                <label> Titolo <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="title" type="text" title="Inserisci titolo"/> <br/>
+                <!--Inserimento Autore -->
+                <label> Autore <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="author" type="text" title="Inserisci Autore"/> <br/>
+                <!--Inserimento Casa editrice -->
+                <label> Casa Editirice <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="editor" type="text" title="Inserisci Casa Editrice"/> <br/>  
+                <!--Inserimento Anno pubblicazione -->
+                <label> Anno Pubblicazione <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="year" type="number" title="Inserisci Anno di pubblicazione"/> <br/>  
+                <!--Inserimento Prezzo -->
+                <label> Prezzo <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="price" type="number" step="0.01" title="Inserisci Prezzo"/> <br/>
+                <!--Inserimento Stato -->
+                <label> Stato di usura <span class="request"  title="campo obbligatorio" > * </span> </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="state" type="text" title="Inserisci Stato"/> <br/>
+                <!--Inserimento Note -->
+                <label> Note </label> <span id="presente"></span> <br/>
+                <textarea name="note" title="InserisciNote"> </textarea>
+                <!-- <input class="inputText" name="note" type="text" title="Inserisci Note "/> --><br/>
+                <!--Inserimento Foto -->
+                <label> Foto del libro  </label> <span id="presente"></span> <br/>
+                <input class="inputText" name="photo" type="file" title="Inserisci Foto "/> <br/>
+                <input class="abutt" id="submit" type="submit" value="Conferma" title="Clicca per confermare" /><br/>
+            </fieldset>
+    </form>
+    <a href="userHome.php" class="abutt" id="homepg"><img id="ind" src="images/indietro.png" alt="indietro"/>Torna alla homepage personale</a>
+</div>
