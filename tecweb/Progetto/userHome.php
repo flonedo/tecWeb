@@ -6,7 +6,7 @@
     }
 	$header = file_get_contents("headerPaginapersonale.html");
 	$footer = file_get_contents("footer.html");
-	$header = str_replace("<!--posizione -->", "Area riservata - Scambio Libri Vi", $header);
+	$header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - Area personale", $header);
 	$con = file_get_contents("contenutoPaginaPersonale.html");
 	$header = str_replace("<!--titolo-->", "Pagina personale - Scambio Libri Vi", $header);
 	$out = $_SESSION["user"];
