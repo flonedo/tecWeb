@@ -37,7 +37,7 @@
                 <a href="#titleCat" id="tornaSuCata"> Torna su </a>';
             }
             else{
-              $output "<p> Non ci sono nuovi inserimenti </p> </div>";
+              $output = "<p> Non ci sono nuovi inserimenti </p> </div>";
             }
         }
         $header = file_get_contents("header.html");
@@ -59,3 +59,4 @@
 		echo $header;
 		echo $con;
 		echo $footer;
+?>
