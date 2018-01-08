@@ -1,7 +1,7 @@
 <?php
 
 	session_start();
-	$output= ' <h1>  Il nostro catalogo </h1>
+	$output= ' <h1 id="titleCat">  Il nostro catalogo </h1>
                <h2>Scegli una categoria di libri e comincia a sfogliare il nostro catalogo! </h2>';
 	
 	require_once 'connectDB.php';
