@@ -53,8 +53,8 @@
 		$header = str_replace("<!-- login -->", $log, $header);
 		$men = file_get_contents("menuCatalogo.html");
 		$header = str_replace("<!-- menu -->", $men, $header);
-		$con = file_get_contents("corpo.html")
-		$con = str_replace(" <!--corpo--> ", $output, $con);
+		$con = file_get_contents("corpo.html");
+		$con = str_replace("<!--corpo-->", $output, $con);
 		$header = str_replace("<!--titolo-->", "Catalogo - Scambio Libri Vi", $header);
 		echo $header;
 		echo $con;

@@ -1,64 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it" >
-    <head>   
-	<title> Scheda libro - ScambioLibriVi </title>
-    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="title" content="Scambio Libri Vi" />
-        <meta name="description" content="Sito dedicato allo scambio di libri usati, pensato per la provincia di Vicenza e dintorni" />
-		<link rel="stylesheet" type="text/css" href="style/style.css" media="handheld, screen"/>
-		<link  rel = "stylesheet" type="text/css" href="style/small.css" media= "handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />
-		<link rel = "stylesheet" type="text/css"  href="style/print.css" media="print"/> 
-        <script src="showDetailsBook.js"></script>
-     </head>
-     <body>
-     
-	<div id="header">
-     <div id="titolo">
-		 <h1> Scambio Libri VI </h1>
-		 <h2> La più semplice piattaforma per lo scambio dei libri, nella provincia di Vicenza  </h2>
-     </div>
-     
-      <?php
-        session_start();
-          if(!isset($_SESSION["user"])){
-            echo'    <div id="logForm">
-                 <form id="loginForm" method="post" action="actionLogin.php">
-                    <fieldset>
-                        <legend> Login Area </legend>
-                        <label> User  </label> <br/>
-                        <input  name="us" type="text" title="Inserisci User"/> <br/>
-                        <label> Password </label> <br/>
-                        <input name="psw" type="password" title="Inserici la password"/> <br/>
-                        <input type="submit" value="Accedi" title="Clicca per accedere" /> <br/>
-                        <a id="linkregistrati" href="register.html" title="Oppure Registrati"> Registrati </a>
-                    </fieldset>
-                 </form>
-            </div>';
-          }
-        else
-            echo '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
-                  <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>'
-     ?>
-</div>
-  	 <div id="where">
-        <p> Ti trovi in: Scheda del libro </p>
-     </div>
-     <div id = "menu">
-        <ul>
-            <li id="current">  <a href="index.php"> <span xml:lang="en"> Home  </span> </a> </li>
-            <li class="centrali">  <a href="chisiamo.php">Chi Siamo </a></li>
-            <li class="centrali">  <a href="contact.php"> Contattaci </a> </li>
-            <li class="ultimo"> <a href="catalogo.php"> Catalogo </a> </li>
-        </ul>
-    </div>
-    <div id="corpo">
-    <?php
+<?php
     	//Vado a recuperarmi l'id del libro
     	$id = $_GET["id"];
+    	$output = "";
         //Vado ad eseguire la connessione
-         require_once 'connectDB.php';
+        require_once 'connectDB.php';
         $lib = new connectDB();
         $openConnection = $lib -> accessDB();
         if(!$openConnection){
@@ -75,7 +20,7 @@
             //Mi prelevo le informazioni relative al venditore
             $infoVenditore = $infoL -> getInfoVenditore($resultInfo["username"], $connection);
             if(!$infoVenditore){
-            	echo "<p> Errore nel trovare i risultati dell'utente </p>";
+            	$output = $output."<p> Errore nel trovare i risultati dell'utente </p>";
             }
             else{
                   //creo i cookie relativi all'infoVenditore
@@ -84,7 +29,7 @@
 
             //Vado a stampare le informazioni del libro
             if($resultInfo){
-                	$output =  '<h1>'.$resultInfo["titolo"].'</h1>'.
+                	$output =  $output.'<h1>'.$resultInfo["titolo"].'</h1>'.
                                     '<img src="photo/'.$resultInfo["foto"].'" id="fotoLibro" alt="La foto del libro '.$resultInfo["titolo"].'"/>'.
                                     '<div id="infoL">'.
                     				'<p id="ISBN" class="info"> <span class="grass"> ISBN: </span>'.$resultInfo["ISBN"].'</p>'.
@@ -98,7 +43,7 @@
                      if($resultInfo["note"]!=NULL){
                      	$output = $output. '<p id="note" class="info"> <span class="grass"> Note del venditore: </span>'.$resultInfo["note"].'</p>';
                      }
-                     echo $output.'<button type="button" onclick="showDetails()"> Vedi i dettagli del venditore </button> 
+                     $output = $output.'<button type="button" onclick="showDetails()"> Vedi i dettagli del venditore </button> 
                         <div id="dettaUser">
                      	<p id="user"> </p>
                         <p id="name"> </p>
@@ -112,16 +57,28 @@
                      ';
             }
             else{
-            	echo "<p> Non ci sono informazioni da visualizzare </p>";
+            	$output = $output."<p> Non ci sono informazioni da visualizzare </p>";
             }
         }
         
+        $header = file_get_contents("header.html");
+		$footer = file_get_contents("footer.html");
+		$header = str_replace("<!--posizione -->", "<a href='index.php'>Home</a> - <a href = 'catalogo.php'>Catalogo </a> - Pagina libro", $header);
+		if(!isset($_SESSION["user"])){
+			$log = file_get_contents("areaLogin.html");
+		}
+		else{
+			$log = '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
+                  <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>';
+		}
+		$header = str_replace("<!-- login -->", $log, $header);
+		$men = file_get_contents("menuCompleto.html");
+		$header = str_replace("<!-- menu -->", $men, $header);
+		$con = file_get_contents("corpo.html");
+		$con = str_replace("<!--corpo-->", $output, $con);
+		$header = str_replace("<!--titolo-->", "Scheda Libro - Scambio Libri Vi", $header);
+		echo $header;
+		echo $con;
+		echo $footer;
+        
     ?>
-    </div>
-    <div id="footer">
-    	 <img id="imgValidCode" src="images/valid-xhtml10.png" alt="Html validation"/>
-        <img id="imgValidCSS" src="images/vcss-blue.gif" alt ="cssValidation"/>
-        <p> Il sito &egrave; creato come progetto nell'ambito del corso di <a href="http://informatica.math.unipd.it/laurea/tecnologieweb.html" title="Pagina web del corso di Tecnlogie web" >Tecnologie web </a> e non rappresenta quindi alcuna associazione esistente. Francesca Lonedo, Marco Giollo, Luca Allegro - <span xml:lang="en">All right reserved </span></p>
-    </div>
- </body>
- </html>
