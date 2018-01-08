@@ -29,7 +29,7 @@
                 $output = $output.'<a href="#titleCat" id="tornaSuCata"> Torna su </a>';
             }
             else{
-              $output = $putput."<p> Non ci sono nuovi inserimenti </p> <p><a href=catalogo.php> Torna al catalogo </a></p>";
+              $output = $output."<p> Non ci sono nuovi inserimenti </p> <p><a href=catalogo.php> Torna al catalogo </a></p>";
             }
         }
         
