@@ -42,6 +42,7 @@
         $reg -> closeConnection();
         
         $header = file_get_contents("header.html");
+        $header = str_replace("<!--load-->", "", $header);
 		$footer = file_get_contents("footer.html");
 		$header = str_replace("<!--posizione -->", "<a href='index.php'>Home </a> - Registrazione", $header);
 		if(!isset($_SESSION["user"])){

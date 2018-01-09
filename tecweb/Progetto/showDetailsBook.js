@@ -1,10 +1,9 @@
 function showDetails(){
-	setElements();
     document.getElementById("dettaUser").style.display="block";
 	
 }
 
-function setElements(){
+/*function setElements(){
 	// vado a recuperarmi i cookie, ATTENZIONE, i COOKIE SONO SEPARATI A ;
 	var cookies = document.cookie.split("; ");
     for (var i = 0; i < cookies.length; i++)
@@ -32,8 +31,15 @@ function setElements(){
 			document.getElementById("numeroTelefono").innerHTML = '<span class="grass"> Telefono: </span>'+valore;
     }
 
+}*/
+
+function showButtons(){
+    document.getElementById("aDett").style.display="block";
+    document.getElementById("cDett").style.display="block";
+    document.getElementById("pVend").style.display="none";
 }
 
 function closeDetails(){
-	document.getElementById("dettaUser").style.display="none";
+    showButtons();
+    document.getElementById("dettaUser").style.display="none";
 }

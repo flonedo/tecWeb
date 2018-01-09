@@ -42,6 +42,7 @@
                   <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>';
 	}
 	$header = str_replace("<!-- login -->", $log, $header);
+    $header = str_replace("<!--load-->", "", $header);
 	$men = file_get_contents("menuIndex.html");
 	$header = str_replace("<!-- menu -->", $men, $header);
 	$con = file_get_contents("contenutoHome.html");

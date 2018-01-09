@@ -41,6 +41,7 @@
             }
         }
         $header = file_get_contents("header.html");
+        $header = str_replace("<!--load-->", "", $header);
 		$footer = file_get_contents("footer.html");
 		$header = str_replace("<!--posizione -->", "<a href='index.php'>Home</a> - Catalogo", $header);
 		if(!isset($_SESSION["user"])){

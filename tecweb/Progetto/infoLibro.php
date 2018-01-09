@@ -52,15 +52,5 @@
             	return null;
             }
         }
-        
-        public function setCookie($array){
-            	setcookie("user", $array["user"], time()+43200,"/");
-                setcookie("nome", $array["nome"], time()+43200,"/");
-                setcookie("cognome", $array["cognome"], time()+43200,"/");
-                setcookie("citta", $array["citta"],time()+43200,"/");
-                setcookie("provincia", $array["provincia"],time()+43200,"/");
-                setcookie("email", $array["email"], time()+43200,"/");
-                setcookie("numeroTelefono", $array["numeroTelefono"],time()+43200,"/");
-        }
     }
 ?>

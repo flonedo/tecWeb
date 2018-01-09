@@ -2,6 +2,7 @@
     	//Vado a recuperarmi l'id del libro
     	$id = $_GET["id"];
     	$output = "";
+        $dettagliVend="";
         //Vado ad eseguire la connessione
         require_once 'connectDB.php';
         $lib = new connectDB();
@@ -23,8 +24,22 @@
             	$output = $output."<p> Errore nel trovare i risultati dell'utente </p>";
             }
             else{
-                  //creo i cookie relativi all'infoVenditore
-           		 $infoL -> setCookie($infoVenditore);
+                 //Sono andato a prelevare i risultati. Adessso devo andare a settare l'apposita form
+                 $dettagliVend = $dettagliVend.' <script type = "text/javascript" src = "showDetailsBook.js"></script> 
+                 <button  id="aDett" type="button" onclick="showDetails()"> Vedi i dettagli del venditore </button> 
+                        <div id="dettaUser">
+                        <h2 id="pVend"> Dettagli Venditore </h2>
+                     	<p id="user"> <span class="grass"> Username: </span>'.$infoVenditore["user"].'</p>
+                        <p id="name"> <span class="grass"> Nome: </span>'.$infoVenditore["nome"].'</p>
+                        <p id="cognome"> <span class="grass"> Cognome: </span>'.$infoVenditore["cognome"].'</p>
+                        <p id="citta"> <span class="grass"> Citt&agrave; : </span>'.$infoVenditore["citta"].'</p>
+                        <p id="provincia"> <span class="grass"> Provincia: </span>'.$infoVenditore["provincia"].'</p>
+                        <p id="email"> <a href="mailto:'.$infoVenditore["email"].'">Scrivi una mail</a></p>';
+                        if ($infoVenditore["numeroTelefono"]!=NULL){
+                            $dettagliVend = $dettagliVend.'<p id="numeroTelefono"> <span class="grass"> Numero Telefono: </span> '.$infoVenditore["numeroTelefono"].'</p>';
+                        }
+                        $dettagliVend = $dettagliVend.'<button id="cDett" type="button" onclick="closeDetails()"> Chiudi dettagli </button>
+                        </div>';
             }
 
             //Vado a stampare le informazioni del libro
@@ -43,25 +58,17 @@
                      if($resultInfo["note"]!=NULL){
                      	$output = $output. '<p id="note" class="info"> <span class="grass"> Note del venditore: </span>'.$resultInfo["note"].'</p>';
                      }
-                     $output = $output.'<button type="button" onclick="showDetails()"> Vedi i dettagli del venditore </button> 
-                        <div id="dettaUser">
-                     	<p id="user"> </p>
-                        <p id="name"> </p>
-                        <p id="cognome"> </p>
-                        <p id="citta"> </p>
-                        <p id="provincia">  </p>
-                        <p id="email"> </p>
-                        <p id="numeroTelefono"> </p>
-                        <button type="button" onclick="closeDetails()"> Chiudi dettagli </button>
-                        </div>
-                     ';
             }
             else{
             	$output = $output."<p> Non ci sono informazioni da visualizzare </p>";
             }
         }
         
+        //Vado a prendere 
         $header = file_get_contents("header.html");
+        $header = str_replace("<!--script-->", '<script type = "text/javascript" src = "showDetailsBook.js"></script>', $header);
+        $header = str_replace("<!--load-->", 'onload="closeDetails()"', $header);
+        $header = str_replace("<!--load-->", 'onload="closeDetails()"', $header);
 		$footer = file_get_contents("footer.html");
 		$header = str_replace("<!--posizione -->", "<a href='index.php'>Home</a> - <a href = 'catalogo.php'>Catalogo </a> - Pagina libro", $header);
 		if(!isset($_SESSION["user"])){
@@ -76,6 +83,7 @@
 		$header = str_replace("<!-- menu -->", $men, $header);
 		$con = file_get_contents("corpo.html");
 		$con = str_replace("<!--corpo-->", $output, $con);
+        $con = str_replace("<!--dettagliVenditore-->", $dettagliVend, $con);
 		$header = str_replace("<!--titolo-->", "Scheda Libro - Scambio Libri Vi", $header);
 		echo $header;
 		echo $con;

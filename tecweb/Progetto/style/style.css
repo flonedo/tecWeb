@@ -449,8 +449,8 @@ textarea{
 }
 
 #dettaUser{
-	display:none;
     text-align:center;
+    display: block;
     margin-right: 30%;
 }
 #dettaUser p{
@@ -569,6 +569,13 @@ button{
 
 #elim{
     margin-top: 1em; 
+}
+#aDett{
+    display: none;
+}
+
+#cDett{
+    display: none;
 }
 /*
 =========================

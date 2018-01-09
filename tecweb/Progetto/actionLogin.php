@@ -28,6 +28,8 @@
       //Una volta completate tutte le operazioni devo sloggarmi dal database
     $log -> closeConnection();
 	$header = file_get_contents("header.html");
+    $header = str_replace("<!--load-->", "", $header);
+    $header = str_replace("<!--load-->", "", $header);
 	$footer = file_get_contents("footer.html");
 	$header = str_replace("<!--posizione -->", "<a href='index.php'>Home </a> - Login", $header);
 	$men = file_get_contents("menuCompleto.html");
