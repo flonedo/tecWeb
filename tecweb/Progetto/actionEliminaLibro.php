@@ -22,7 +22,7 @@
                 }
             $output = $output."I libri sono stati eliminati";
         }
-        
+        $reg -> closeConnection();
     
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");

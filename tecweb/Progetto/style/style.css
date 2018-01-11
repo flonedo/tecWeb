@@ -127,6 +127,18 @@ font-size: 0.7em;
 SEZIONE WHERE
 ==================
 */
+
+#errore{
+    color:red;
+    display: block;
+    margin: auto;
+    padding-top: 0.5em;
+    border: 1px solid;
+    width:50%;
+}
+#errore p{
+    margin:0.5em;
+}
 #where{
 	background-color: #0000cc;
 	border-bottom: 1px solid #3333ff;
@@ -209,6 +221,9 @@ SEZIONE menu
 SEZIONE CORPO
 ========================
 */
+#registerForm{
+    margin-bottom:0.5em;
+}
 
 textarea{
     height: 200px;

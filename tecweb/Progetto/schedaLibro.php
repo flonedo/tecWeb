@@ -1,4 +1,5 @@
 <?php
+        session_start();
     	//Vado a recuperarmi l'id del libro
     	$id = $_GET["id"];
     	$output = "";

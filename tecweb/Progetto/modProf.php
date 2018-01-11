@@ -37,6 +37,8 @@
             $con = str_replace("<!--provincia-->", $provincia, $con);
             $con = str_replace("<!--email-->", $email, $con);
             $con = str_replace("<!--telefono-->", $numeroT, $con);
+            $menu = file_get_contents("menuPaginaPersonale.html");
+            $header = str_replace("<!--menu-->", $menu, $header);
             $out = $_SESSION["user"];
             $header = str_replace("<!--sottotitolo-->",$out, $header);
             echo $header;

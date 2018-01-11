@@ -59,6 +59,8 @@
                 $r=$connessione->query("UPDATE `copiaLibro` SET foto= '$id.jpg' WHERE codiceLibro='$id';");
                 $output = $output."<p>Il libro &egrave stato inserito correttamente</p>";
             }
+            //chiudo la connessione
+            $reg -> closeConnection();
         }  
 
     $header = file_get_contents("headerPaginapersonale.html");

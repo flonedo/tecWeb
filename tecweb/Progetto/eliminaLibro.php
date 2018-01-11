@@ -37,6 +37,8 @@
     $con = file_get_contents("eliminaLibriCorpo.html");
     $con = str_replace("<!--elencoLibri-->", $output, $con);
     $header = str_replace("<!--titolo-->", "Elimina Libro - Scambio Libri Vi", $header);
+    $menu = file_get_contents("menuPaginaPersonale.html");
+    $header = str_replace("<!--menu-->", $menu, $header);
     $out = $_SESSION["user"];
     $header = str_replace("<!--sottotitolo-->",$out, $header);
     echo $header;

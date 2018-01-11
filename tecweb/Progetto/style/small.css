@@ -1,36 +1,11 @@
 /*
-====================
-  SEZIONE GENERALE
-====================
-*/
-html{
-	background-color: SteelBlue ;
-}
-
-*{
-	padding:0em;
-	margin:0em;
-}
-
-html, body{
-	max-width: 480px;
-	margin: auto;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 100%;
-}
-
-body{
-	background-color: white;
-}
-
-/*
 ===============
 SEZIONE HEADER
 ===============
 */
 #logForm{
     padding-bottom: 0.3em;
-		margin-left: 1%;
+    margin-left: 1%;
 }
 
 #loginForm input[type="submit"]{
@@ -45,54 +20,23 @@ SEZIONE HEADER
     border: solid 1px blue;
     background: #0095cd;
 }
-#loginForm{
-	font-size: 0.7em;
-    width:6em;
-}
 
-#loginForm fieldset {
-	border-color:#3333ff;
-    margin:0.3em;
-    padding:1em;
-}
 
-#loginForm label{
-	line-height: 1.5em;
-}
 
-#invioLogin{
-	float:right;
-}
-
-#header{
-    overflow:auto;
-    background-color:lightBlue;
-    padding-left: 1.5em;
-}
-
-#titolo{
-    margin-right: 28%;
-    padding:1em;
-}
 #titolo h1{
 	color: #0000cc;
 	font-size: 1.5em;
     display:block;
-
 }
 
 #titolo h2{
-display: none;
+    display: none;
 }
 
 #logOut{
 	margin-left:1%;
 }
 
-#nome{
-	font-style: italic;
-    color: red;
-}
 
 /*
 ==================
@@ -109,17 +53,11 @@ SEZIONE menu
 =========================
 */
 
-#tornaSuCata{
-	display:block;
-	float:right;
-}
 #menu{
 	margin-left: 3px;
 	padding: 0.5em;
 	font-size: 1.1em;
     border-bottom: 1px solid #3333ff;
-    /*border-left: 1px solid #3333ff;
-    border-right: 1px solid #3333ff;*/
 }
 
 #menu ul{
@@ -129,18 +67,10 @@ SEZIONE menu
 
 #menu ul li{
 	display:flex;
-	padding: 0.5em;
+    padding: 0.5em;
   border-top: 1px solid #3333ff;
   border-left: 1px solid #3333ff;
   border-right: 1px solid #3333ff;
-}
-
-#menu a:visited{
-	color: #003380;
-}
-
-#menu a:link{
-	color: #0066ff;
 }
 
 #current{
@@ -160,12 +90,6 @@ SEZIONE CORPO
 ========================
 */
 
-#confel{
-	margin-bottom:1em;
-    font-weight: bold;
-    color:red;
-}
-
 .abutt{
 	display:block;
     width: 50%;
@@ -179,111 +103,24 @@ SEZIONE CORPO
     border: solid 1px blue;
     background: #0095cd;
 }
-#corpo h2{
-	text-align:center;
-    font-family: "Vag Rounded";
-    font-size:1.5em;
-    font-weight:normal;
-    font-style:italic;
-    margin-bottom: 1em;
+#aPers{
+    padding-bottom: 0.5em;
+    margin-left: 1%;
+    margin-top: 2em;
 }
-#corpo h1{
-	text-align:center;
-    font-family: "Vag Rounded";
-    font-size: 3em;
-    margin-bottom: 0.5em;
-}
-#cata{
-	list-style-type: none;
-    margin: 0.5em;
-    text-align:center;
-}
-#primocata{
-	border-top:1px solid #3333ff;
-}
-#cata li{
-	padding: 0.5em;
-    font-size: 1.1em;
-    border-bottom: 1px solid #3333ff;
-    border-left: 1px solid #3333ff;
-    border-right: 1px solid #3333ff;
+#logout{
+    padding-bottom: 0.2em;
+    margin-left: 1%;
+    margin-top: 0.9em;
+    margin-bottom:0.5em;
 }
 
-#primoCata{
-	border-top: 1px solid #3333ff;
-}
 
-#novita ul{
-	list-style-type: none;
-    font-size: 1.5em;
-}
-
-#novita ul li{
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
-}
-#fotoLibro{
-	display:block;
-    float:right;
-    width:30%;
-}
-.info{
-	padding: 0.5em;
-}
-.grass{
-	 font-weight: 900;
-}
-#corpo {
-    /*border-left: 1px solid #3333ff;
-    border-right: 1px solid #3333ff;*/
-    padding:2em;
-   overflow:auto;
-}
-
-#imgIndex{
-	display:block;
-	margin: auto;
-}
-
-#corpo label{
-	margin-right:1em;
-}
-#corpo fieldset{
-	float: center;
-    width: 20em;
-    margin:auto;
-   	padding: 1em;
-}
-
-.inputText{
-	width: 80%;
-    padding: 0.5em;
-    margin:0.3em;
-}
-
-.inputPassword{
-	width: 80%;
-    padding: 0.5em;
-    margin:0.3em;
-}
 
 #submit{
 	float: right;
     font-size: 1em;
     padding: 0.3em;
-}
-
-#corpo fieldset p{
-	font-size: 0.7em;
- }
-.request{
-	color:red;
-    float: inline;
-}
-
-#presente{
-	color:red;
-    font-size:0.7em;
 }
 
 #immdm{
@@ -293,88 +130,24 @@ SEZIONE CORPO
 #immUni{
 	display:none;
 }
-#dlContact{
-	padding: 1em;
 
-}
-
-#dlContact dt{
-	padding-top: 1.3em;
-	font-weight: bold;
-}
-#dlContact dd{
-	text-indent: 3em;
-    line-height: 1.5em;
-}
-
-#profilo fieldset{
-	border-style: none;
-    width: 100%;
-}
-
-#profilo fieldset legend{
-	color: red;
-    font-size: 2em;;
-
-}
-
-#profilo fieldset button{
-	display:block;
-    width: 30em;
-	margin:auto;
-	outline: none;
-    cursor:pointer;
-    text-align:center;
-    text-decoration: none;
-    color: white;
-    padding: 0.5em 0.5em;
-    border: solid 1px blue;
-    background: #0095cd;
-}
 
 #divSfo{
-    background-color: white;
+        background-color: white;
 		width:100%;
 		border-right: none;
 }
+
 #novita{
 display: none;
 }
-
-#sfoglia fieldset button{
-	display:block;
-    width: 40%;
-	margin:auto;
-	outline: none;
-    cursor:pointer;
-    text-align:center;
-    text-decoration: none;
-    color: white;
-    padding: 0.5em 0.5em;
-    border: solid 1px blue;
-    background: #0095cd;
-}
-
-#sfoglia fieldset legend{
-	text-align:center;
-    font-family: "Vag Rounded";
-    font-size: 3em;
-    margin-bottom: 0.5em;
-}
-
-#sfoglia fieldset{
-	border-style: none;
-    width: 100%;
-    margin: 1em;
-}
-
-
 
 #dettaUser{
 	display:none;
     text-align:center;
     margin-right: 30%;
 }
+
 #dettaUser p{
 	margin:0.5em;
 }
@@ -385,41 +158,7 @@ display: none;
     font-size: 2em;
     margin-bottom: 0.5em;
 }
-#divSfo a{
-	padding: 0.5em;
-    font-size:1.3em;
-    display: block;
-    width: 40%;
-    margin: auto;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    padding: 0.5em 0.5em;
-    border: solid 1px blue;
-    background: #0095cd;
-}
 
-button{
-	padding: 0.5em;
-    font-size:16pt;
-    display: block;
-    width: 40%;
-    margin: auto;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    padding: 0.5em 0.5em;
-    border: solid 1px blue;
-    background: #0095cd;
-}
-
-#note{
-	margin-bottom:1em;
-}
 
 #elencoTit ul{
 	list-style-type: none;
@@ -429,7 +168,11 @@ button{
 #elencoTit ul li{
   padding-top: 0.3em;
   padding-bottom: 0.3em
-	font-size: 1.1em;
+  font-size: 1.1em;
+}
+
+.abutt{
+    display:block;
 }
 /*
 =========================
