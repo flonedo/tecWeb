@@ -22,7 +22,7 @@
             	header("Location: userHome.php");
        		}
             else{
-            	$output = $output.'<p> Non sei registrato! <a href="register.html"> Registrati</a>! <br/> Oppure torna alla <a href="index.php"> Home </a> </p>';
+            	$output = $output.'<p> Non sei registrato! <a href="registrazione.php"> Registrati</a>! <br/> Oppure torna alla <a href="index.php"> Home </a> </p>';
             }
         }
       //Una volta completate tutte le operazioni devo sloggarmi dal database
