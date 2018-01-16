@@ -40,6 +40,9 @@
                   if(strlen($password)==0){
                       $error = $error."- Password richiesta! </br>";
                   }
+                  else if(strlen($password) > 12 ){
+                      $error = $error."- Password troppo lunga! </br>";
+                  }
                   if(strlen($citta)==0){
                       $error = $error."- Citt&agrave; richiesta! </br> ";
                   }

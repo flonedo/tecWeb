@@ -27,7 +27,7 @@
                  if($ok){
                      $errori = $errori. " - Username già presente. Cambia nikename.";
                  }
-                 $error = $error.'<p id="err">'.$errori.'</p> </div>';
+                 $error = $error.'<p class="err">'.$errori.'</p> </div>';
              }
              else{
                  
@@ -48,8 +48,12 @@
                     }        
                  }
         }
+
     $header = file_get_contents("header.html");
+    $header = str_replace("<!--script-->", "<script type=\"text/javascript\" src=\"functions.js\"></script>", $header);
 	$footer = file_get_contents("footer.html");
+    $men = file_get_contents("menuCompleto.html");
+    $header = str_replace("<!-- menu -->", $men, $header);
 	$header = str_replace("<!--posizione -->", "Registazione", $header);
     $header = str_replace("<!--load-->", "", $header);
 	$con = file_get_contents("corpo.html");

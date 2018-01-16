@@ -128,16 +128,21 @@ SEZIONE WHERE
 ==================
 */
 
-#errore{
-    color:red;
+.err{
+    color: red;
+    border: 1px solid red;
     display: block;
+    padding: 0.5em;
+    margin-top: 0.3em;
+}
+
+#errore{
     margin: auto;
-    padding-top: 0.5em;
-    border: 1px solid;
     width:50%;
 }
+
 #errore p{
-    margin:0.5em;
+    margin:0.5em;*/
 }
 #where{
 	background-color: #0000cc;
