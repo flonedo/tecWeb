@@ -18,6 +18,7 @@
                     $photo="photo/$key.jpg";
                     if(file_exists($photo))
                         unlink($photo);
+                    $r=$connection->query("DELETE FROM genereLibro WHERE codiceLibro=$key;");
                     $r=$connection->query("DELETE FROM copiaLibro WHERE codiceLibro=$key;");
                 }
             $output = $output."I libri sono stati eliminati";

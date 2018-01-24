@@ -156,8 +156,6 @@ function checkPassword(password){
         mostraErrore(password, "La password piò essere lunga fino a 12 caratteri ");
         return false;
     }
-    
-    
 }
 
 function mostraErrore(input, testo){
@@ -201,6 +199,142 @@ function togliErrore(input){
 
      return correct;
  }
- 
- 
- 
+
+ function checkBook() {
+    var isbn = document.forms["addBookForm"]["isbn"];
+    var title = document.forms["addBookForm"]["title"];
+    var author = document.forms["addBookForm"]["author"];
+    var editor = document.forms["addBookForm"]["editor"];
+    var year = document.forms["addBookForm"]["year"];
+    var price = document.forms["addBookForm"]["price"];
+    var kind = document.forms["addBookForm"]["kind[]"];
+    var state = document.forms["addBookForm"]["state"];
+    var cIsbn= checkIsbn(isbn);
+    var cTitle= checkTitle(title);
+    var cAuthor=checkAuthor(author);
+    var cEditor=checkEditor(editor);
+    var cYear=checkYear(year);
+    var cPrice=checkPrice(price);
+    var cKind=checkKind(kind);
+    var cState=checkState(state);
+    var cPhoto=checkPhoto();
+    return cIsbn && cTitle && cAuthor && cEditor && cYear && cPrice && cKind && cState && cPhoto;
+ }
+
+function checkIsbn(isbn) {
+    var tmp = isbn.value;
+    if(tmp.length==0){
+        mostraErrore(isbn, "Il codice ISBN è richiesto");
+         return false;
+    }
+    var pattern = new RegExp("([0-9]){13}/g");
+    if(pattern.test(tmp)){
+        togliErrore(isbn);
+        return true;
+    }
+    else{
+        mostraErrore(isbn, "Formato del codice ISBN non è corretto! Inserire 13 caratteri numerici");
+        return false;
+    }
+}
+function checkTitle(title) {
+    var ti=title.value;
+    if(ti.length==0){
+        mostraErrore(title, "Il titolo è richiesto");
+        return false;
+    }
+    togliErrore(title);
+    return true;
+}
+function checkAuthor(author) {
+    var au=author.value;
+    if(au.length==0){
+        mostraErrore(author, "L'autore è richiesto");
+         return false;
+    }
+    togliErrore(author);
+    return true;
+}
+function checkEditor(editor) {
+    var tmp=editor.value;
+    if(tmp.length==0) {
+        mostraErrore(editor, "Inserire l'editore");
+        return false;
+    }
+    togliErrore(editor);
+    return true;
+}
+function checkYear(year) {
+   var tmp=year.value;
+    if(tmp.length>0){
+        var number = parseInt(tmp);
+        if(isNaN(number)) {
+            mostraErrore(year, "Inserire un numero");
+             return false;
+        }
+        if(number > (new Date()).getFullYear() || number) {
+            mostraErrore(year, "Il numero non è valido");
+            return false;
+        }
+    }
+    togliErrore(year);
+    return true;
+}
+function checkPrice(price){
+    var pr=price.value;
+    if(pr.length==0) {
+        mostraErrore(price, "Il prezzo è obbligatorio");
+        return false;
+    }
+    var number = parseFloat(pr);
+    if(isNaN(number)){
+        mostraErrore(price, "Inserire un numero");
+        return false;
+    }
+    if(number<0) {
+        mostraErrore(price, "Il prezzo non può essere negativo");
+        return false;
+    }
+    togliErrore(price);
+    return true;
+}
+function checkKind(kind) {
+    var counter=0;
+    for (var i = 0; i < kind.length; i++)
+        if(kind[i].checked)
+            counter++;
+    if(counter==0) {
+        mostraErrore(kind[kind.length-1], "Selezionare almeno un genere");
+        return false;
+    }
+    if(counter>3) {
+        mostraErrore(kind[kind.length-1], "Selezionare al massimo 3 generi");
+        return false;
+    }
+    togliErrore(kind[0]);
+    return true;  
+}
+function checkState(state){
+    var tmp=state.value;
+    if(tmp.length==0){
+        mostraErrore(state, "Selezionare lo stato");
+        return false;
+    }
+    togliErrore(state);
+    return true;
+}
+function checkPhoto() {
+    var file = document.forms["addBookForm"].elements["photo"];
+    if(file.value.length!=0) {
+        var exts=['.jpg','.jpeg'];
+        if((new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(file.value)) {
+            togliErrore(file);
+            return true;
+        } else {
+            mostraErrore(file, "Selezionare un file con estensione .jpg o .jpg");
+            return false;
+        } 
+    }
+    togliErrore(file);
+    return true;
+}

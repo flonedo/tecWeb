@@ -65,10 +65,3 @@
     echo $con;
     echo $footer;
 ?>
-
-
-
-
-<?php
-    
-?>
