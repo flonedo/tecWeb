@@ -1,0 +1,205 @@
+\documentclass[openany,10pt,a4paper]{article}
+\usepackage[T1]{fontenc} % codifica dei font
+\usepackage[utf8]{inputenc} % lettere accentate da tastiera
+\usepackage[italian]{babel} % lingua del documento
+\usepackage{url} % per scrivere gli indirizzi Internet
+\usepackage{graphicx}
+\usepackage{subfiles}
+
+
+
+\title{ScambioLibriVI}
+\author{Luca Allegro \and Marco Giollo \and Francesca Lonedo}
+\date{\today}
+
+
+\begin{document}
+	\makeatletter
+	\begin{titlepage}
+		\begin{center}
+			
+
+			{\Huge \bfseries  \@title }\\[5em]
+			\vfill
+			{\Large Progetto di Tecnologie Web} \\[2em]
+			\begin{tabular}{ p{5cm} | p{5cm} }
+				Anno Accademico & 2017-2018 \\
+				\\
+				Autori & Luca Allegro \newline Marco Giollo \newline Francesca Lonedo \\
+				\\
+				Professori & Lamberto Ballan \newline Matteo Ciman \newline Ombretta Gaggi  \\
+			\end{tabular}\\[3 em]
+			\vfill
+			{\large \@date}
+			\vfill
+			\includegraphics[height=2 cm]{header_dipartimento_matematica.png}\\[3em]
+		\end{center}
+	\end{titlepage}
+
+
+	\pagenumbering{gobble}
+	
+	
+
+
+	\newpage
+
+	\pagenumbering{roman}
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+
+\section{Introduzione}
+	\subsection{Cos'è ScambioLibriVI}
+		\textit{ScambioLibriVI} è una piattaforma web pensata per la compravendita di libri usati tra privati. \\
+		Poiché le elevate spese di spedizione rendono spesso inconveniente l'acquisto dell'usato rispetto al nuovo, con \textit{ScambioLibriVI} si è deciso di abbandonare il classico concetto di e-Commerce: il sito vuole infatti essere una bacheca degli annunci per mettere in contatto venditori e acquirenti, che dovranno accordarsi autonomamente sulle modalità di scambio. Sebbene gli utenti siano in totale libertà, lo spirito dell'applicazione è quello di favorire lo passaggio "a mano" dei prodotti in quanto sicuro, conveniente ed ecologico.
+	\subsection{L'idea di base}
+	La compravendita di libri usati è attualmente un'attività difficile; sebbene esistano piattaforme che offrano tale servizio, questo è spesso limitato. L'offerta attualmente disponibile include:
+	\begin{itemize}
+		\item piattaforme di e-commerce generiche;
+		\item negozi online che trattengono una percentuale del prezzo;
+		\item piccoli forum specializzati di scarsa diffusione.
+	\end{itemize}
+	E' in questo contesto che si inserisce \textit{ScambioLibriVI}, una piattaforma gratuita che si offre di mettere in contatto gli utenti interessati a scambiare libri.
+\section{Progettazione}
+	\subsection{Requisiti}
+		La piattaforma prevede tre categorie di utenti, che hanno accesso a differenti funzionalità.
+		\subsubsection{Visitatore}
+		Un visitatore del sito ha accesso alle seguenti funzionalità
+				\begin{itemize}
+					\item creazione di un nuovo account:
+						\begin{itemize}
+							\item inserimento username;
+							\item inserimento password;
+							\item inserimento nome;
+							\item inserimento cognome;
+							\item inserimento città;
+							\item inserimento provincia;
+							\item inserimento indirizzo e-mail;
+							\item inserimento numero di telefono.
+						\end{itemize}
+					\item consultazione del catalogo;
+					\item visualizzazione dei dettagli relativi a un libro:
+						\begin{itemize}
+							\item ISBN;
+							\item titolo;
+							\item autore;
+							\item stato del libro;
+							\item casa editrice;
+							\item anno di pubblicazione;
+							\item zona di ritiro del libro;
+							\item informazioni sul venditore:
+								\begin{itemize}
+									\item username;
+									\item nome;
+									\item cognome;
+									\item città;
+									\item provincia;
+								\end{itemize}
+							\item contatto diretto via e-mail;
+						\end{itemize}
+				\end{itemize}		
+		\subsubsection{Utente registrato}
+		Una volta eseguito l'accesso al sito inserendo \textbf{username} e \textbf{password}, un utente ha accesso al proprio \textbf{profilo riservato}. Il pannello del profilo riservato mette a disposizione le 
+		seguenti funzionalità:
+				\begin{itemize}
+					\item modifica dei dati associati al profilo:
+						\begin{itemize}
+							\item cambio password;
+							\item modifica città;
+							\item modifica provincia;
+							\item modifica indirizzo e-mail;
+							\item modifica numero di telefono;
+						\end{itemize}
+					\item inserimento di un nuovo libro da vendere:
+						\begin{itemize}
+							\item inserimento codice ISBN;
+							\item inserimento titolo;
+							\item inserimento autore;
+							\item inserimento casa editrice;
+							\item inserimento anno di pubblicazione;
+							\item inserimento prezzo;
+							\item selezione del genere;
+							\item selezione dello stato di usura;
+							\item inserimento di note aggiuntive;
+							\item caricamento di un'immagine;
+						\end{itemize}
+					\item rimozione di un libro tra quelli inseriti;
+					\item rimozione del profilo personale.
+				\end{itemize}
+		\subsubsection{Altri requisiti di sistema}	
+		Oltre alle funzionalità specifiche sopra descritte il sito deve garantire:
+			\begin{itemize}
+				\item \textbf{accessibilità:}
+					\begin{itemize}
+						\item dispositivi mobile;
+						\item utenti diversamente abili;
+					\end{itemize}
+				\item \textbf{usabilità:}
+					\begin{itemize}
+						\item utilizzo intuitivo;
+						\item facile accesso alle informazioni;
+					\end{itemize}
+			\end{itemize}
+			
+	\subsection{Scelte implementative}
+		\subsubsection{Database}
+			Per la gestione dei dati degli utenti e dei libri inseriti, \textit{ScambioLibriVi} si avvale di un 
+			database relazione \textit{MySQL}.
+			E' stato scelto di utilizzare un database relazionale, in particolare \textit{MySQL}, per la facilità di gestione dello stesso rispetto ad altre tecnologie; un database \textit{MySQL}, infatti, risiede in un unico server, evitando così problematiche relative alla consistenza dei dati. \\ La scelta di un database centralizzato pone ovviamente dei limiti legati alla scalabilità del sistema e alla sua affidabilità. Poiché il carico di utenti previsto, almeno nelle prime fasi di rilascio del sistema, è ben lontano dalla soglia critica, non sono previste problematiche legate alla troppa affluenza nell'immediato futuro; poiché il servizio non tratta transazioni monetarie o funzionalità che richiedano risposte real-time, la sua vulnerabilità a guasti o attacchi che ne impediscano il funzionamento momentaneo è stata considerata un rischio trascurabile.
+		\subsubsection{Pagine web}
+			Per la realizzazione di  \textit{ScambioLibriVi} sono stati utilizzati \textit{XHTML}, \textit{CSS3}, \textit{PHP} e \textit{JavaScript}. \\
+			Le pagine vengono realizzate dinamicamente, in modo da poter riutilizzare tutte le porzioni di codice condivise come \textit{header}, \textit{footer}, \textit{login}, \textit{menu} ecc; questo ha permesso di ridurre il peso complessivo del sito e facilità notevolmente le attività di manutenzione. Ad essere creato dinamicamente mediante l'utilizzo di codice \textit{PHP} è anche il contenuto richiesto dall'utente, tramite chiamate al database.
+			\\ La grafica del sito è gestita interamente in \textit{CSS3}; sono resi disponibili tre fogli di stile che forniscono il supporto alla consultazione tramite dispositivi desktop e mobile;un ulteriore foglio di stile è dedicato alla stampa. 
+			\\ L'utilizzo di codice \textit{JavaScript} è ridotto al minimo per garantire il più alto grado di accessibilità raggiungibile. E' stata prestata particolare attenzione a permettere la navigazione del sito anche da dispositivi che non supportino \textit{JavaScript}; in particolare il sito è accessibile anche mediante l'utilizzo di \textit{screen readers}.
+			\\ Grazie a questi accorgimenti vi è una totale divisione tra il contenuto (XHTML), la sua presentazione (CSS3) e il suo comportamento (PHP).
+			
+		\subsubsection{Accessibilità}
+		E' stata curata in dettaglio l'accessibilità del sito da parte di tutte le categorie di utenti, tra cui i diversamente abili. In particolare sono stati presi i seguenti accorgimenti:
+			\begin{itemize}
+				\item inserimento di ausili alla navigazione;
+				\item riduzione al minimo dell'utilizzo di \textit{JavaScript} e degradazione elegante e completa di tutte le funzionalità qualora non disponibile; per come è stato utilizzato, \textit{JavaScript} non influisce negativamente sulla performance degli \textit{screen readers};
+				\item dichiarazione di span di lingua per facilitare la lettura del contenuto tramite \textit{screen reader}; per ovvi motivi, non è possibile garantire la corretta lettura dei contenuti inseriti dagli utenti, che verranno sempre letti con pronuncia italiana;
+				\item è stato completamente evitato l'utilizzo di tabelle per la strutturazione del contenuto; sono stati invece utilizzati elenchi puntati, meglio gestiti dagli \textit{screen reader};
+				\item il contenuto è totalmente separato dalla sua presentazione, gestita tramite \textit{CSS}; sono forniti due fogli di stile per adattare il sito alla visualizzazione tramite dispositivi desktop e mobile ed è definito un ulteriore foglio per la stampa; il sito è pienamente utilizzabile anche senza presentazione \textit{CSS}.
+			\end{itemize}
+		\subsubsection{Usabilità}
+		Il sito è stato reso semplice ed intuitivo in modo da permetterne l'utilizzo alle più varie categorie di utenti appassionate di lettura e questo ha ridotto il numero di funzionalità che è stato deciso di rendere disponibile. \\ 
+		Lo scopo di \textit{ScambioLibriVi} è quello di invogliare gli utenti a scoprire qualcosa di nuovo e aiutare appassionati a scambiare libri tra di loro, e non vuole in alcun modo sostituire una tradizionale libreria o e-commerce.
+		Per la natura del servizio, quindi, è stato scelto consapevolmente di non fornire uno strumento di ricerca specifica: così come in una biblioteca il visitatore guarda cosa è disponibile o meno aggirandosi tra gli scaffali dei vari reparti, anche in \textit{ScambioLibriVi} l'utente sfoglia il catalogo a seconda del genere di interesse. 
+			A tal proposito è stata inoltre messa a disposizione nella home del sito una bacheca delle novità.
+		Date le dimensioni ridotte del sito e le motivazioni sopra esposte, riteniamo che l'assenza di opzioni di ricerca avanzate non sia al momento una limitazione; anche con il solo filtro per genere, infatti, in pochi click è comunque possibile scoprire se un eventuale particolare testo cercato sia presente o meno nel catalogo.
+	
+	\section{Team di sviluppo}
+	\textit{ScambioLibriVi} è stato interamente progettato ed implementato da Luca Allegro, Marco Giollo e Francesca Lonedo. E' segnato in \textbf{grassetto} il membro del gruppo che ha fornito il contributo maggiore all'attività.
+	\begin{itemize}
+		\item Progettazione: Luca Allegro, Marco Giollo, Francesca Lonedo;
+		\item Database: 
+			\begin{itemize}
+				\item creazione: \textbf{Luca Allegro}, Marco Giollo, Francesca Lonedo;
+				\item popolamento: \textbf{Francesca Lonedo};
+			\end{itemize}
+		\item XHTML:
+			\begin{itemize}
+				\item testi: Luca Allegro, Marco Giollo, \textbf{Francesca Lonedo};
+				\item struttura: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
+				\item divisione contenuto e comportamento: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
+			\end{itemize}
+		\item PHP:
+			\begin{itemize}
+				\item area utente: \textbf{Luca Allegro} Marco Giollo;
+				\item scheda libri: \textbf{Marco Giollo}, Francesca Lonedo;
+				\item catalogo: \textbf{Francesca Lonedo};
+				\item funzioni e chiamate al database: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
+			\end{itemize}
+		\item JavaScript: \textbf{Marco Giollo}, Francesca Lonedo;
+		\item Fogli di stile CSS:
+			\begin{itemize}
+				\item desktop: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
+				\item mobile: \textbf{Francesca Lonedo};
+				\item stampa: \textbf{Luca Allegro};
+			\end{itemize}
+		\item
+		\item Relazione: \textbf{Francesca Lonedo};
+	\end{itemize}
+\end{document}
