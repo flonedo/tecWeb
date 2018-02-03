@@ -1,27 +1,27 @@
 <div id="corpo">
          <h1> Modifica Dati Utente</h1>
          <h2> Modifica i dati che vuoi cambiare, quelli non modificati rimarranno invariati</h2>
-          <form id="registerForm" action="actionModProf.php"  method="post">
+          <form id="registerForm" action="actionModProf.php" onsubmit="return correctForm()" method="post">
          	<fieldset>
             	<legend> Modifica Utente </legend>
                 <!--Modifica Password -->
                 <label> Nuova Password </label><br/>
-                <input class="inputText" name="psw" type="password" title="Modifica la password" value="<!--password-->"/> <br/>
+                <span><input class="inputText" name="psw" type="password" title="Modifica la password" value="<!--password-->"/> </span> <br/>
                 <!--Conferma Password -->
                 <label> Conferma Nuova Password </label><br/>
-                <input class="inputText" name="psw" type="password" title="Ripeti la password" value="<!--password-->"/> <br/>
+                <span><input class="inputText" name="psw" type="password" title="Ripeti la password" value="<!--password-->"/> </span> <br/>
                 <!--Modifica Città -->
                 <label> Citt&agrave;  </label><br/>
-                <input  class="inputText" name="citta" type="text" title="Modifica la citt&agrave;" value="<!--citta-->"/> <br/>
+                <span><input  class="inputText" name="citta" type="text" title="Modifica la citt&agrave;" value="<!--citta-->"/> </span><br/>
                 <!--Modifica Provincia -->
                 <label> Provincia  </label><br/>
-                <input  class="inputText" name="prov" type="text" title="Modifica la provincia" value="<!--provincia-->"/> <br/>
+                <span><input  class="inputText" name="prov" type="text" title="Modifica la provincia" value="<!--provincia-->"/></span> <br/>
                 <!--Modifica email -->
                 <label> Email </label> <br/>
-                <input class="inputText" name="em" type="text" title="Inserisci la tua mail" value="<!--email-->"/><br/>
+                <span><input class="inputText" name="em" type="text" title="Inserisci la tua mail" value="<!--email-->"/></span><br/>
                 <!--Modifica numero di telefono opzionale -->
                 <label> Numero di Telefono </label> <br/>
-                <input class="inputText" name="tel" type="text" title="Modifica il tuo numero di telefono" value="<!--telefono-->"/><br/>
+                <span><input class="inputText" name="tel" type="text" title="Modifica il tuo numero di telefono" value="<!--telefono-->"/></span><br/>
                 <!--Tasto per inviare i dati -->
                 <input id="submit" class="abutt" type="submit" value="Conferma" title="Conferma le modifiche"/><br/>
             </fieldset>

@@ -30,6 +30,7 @@
             $header = file_get_contents("headerPaginapersonale.html");
             $footer = file_get_contents("footer.html");
             $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Modifica Profilo", $header);
+            $header = str_replace("<!--script-->", "<script type=\"text/javascript\" src=\"functions.js\"></script>", $header);
             $con = file_get_contents("modProfCorpo.html");
             $header = str_replace("<!--titolo-->", "Modifica Profilo - Scambio Libri Vi", $header);
             $con = str_replace("<!--password-->", $psw, $con);
