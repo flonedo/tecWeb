@@ -64,7 +64,7 @@ INSERT INTO `genere` (`id`, `nome`) VALUES
 (20, 'Fai da te'),
 (21, 'Economia'),
 (23, 'Narrativa'),
-(24, 'Lingua staniera'),
+(24, 'Lingua straniera'),
 (25, 'Giallo'),
 (26, 'Thriller'),
 (27, 'Religione');
