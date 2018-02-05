@@ -35,7 +35,7 @@
                   if($ok){
                      $errori = $errror. " - Username già presente. Cambia nikename.";
                  }
-                  $error = $error.'<p id="err" >'.$errori.'</p> </div>';
+                  $error = $error.'<p class="err" >'.$errori.'</p> </div>';
                      if(strlen($errori)==0){
                          //non ci sono errori, posso andare ad eseguire la query
                         $inserimento = $newUser -> acceptUser($user, $password, $nome, $cognome, $citta, $provincia, $email, $tel);

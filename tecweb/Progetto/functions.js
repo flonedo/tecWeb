@@ -92,7 +92,7 @@ function checkProv(provincia){
         mostraErrore(provincia, "La provincia è richiesta");
          return false;
     }
-	var pattern = new RegExp('^[a-zA-Z]{3,}$');
+	var pattern = new RegExp('^[a-zA-Z]{2,}$');
 	if(pattern.test(prov)){
 		togliErrore(provincia);
 		return true;
@@ -199,6 +199,41 @@ function togliErrore(input){
 
      return correct;
  }
+
+function ceckSamePassword(password1, password2){
+    var pass1 = password1.value;
+    var pass2 = password2.value;
+    if(pass1 !== pass2){
+        mostraErrore(password1, "La nuova password e la conferma devono essere uguali!");
+        mostraErrore(password2, "La nuova password e la conferma devono essere uguali!" )
+        return false;
+    }
+    else{
+        togliErrore(password1);
+        togliErrore(password2);
+        return checkPassword(password1);
+    }
+}
+
+function ceckModForm(){
+    var pass1 = document.forms["registerForm"]["psw"];
+    var pass2 = document.forms["registerForm"]["psw1"];
+    var citta = document.forms["registerForm"]["citta"];
+    var provincia = document.forms["registerForm"]["prov"];
+    var email = document.forms ["registerForm"]["em"];
+    var tel = document.forms["registerForm"] ["tel"];
+    
+    var correct = ceckSamePassword(pass1, pass2);
+    var correctCity = checkCity(citta);
+    var correctProv = checkProv(provincia);
+    var correctEmail = checkEmail(email);
+    var correctTel = checkTel(tel);
+    
+    correct = correctCity && correct && correctProv && correctEmail && correctTel;
+    
+    return correct;
+}
+
 
  function checkBook() {
     var isbn = document.forms["addBookForm"]["isbn"];

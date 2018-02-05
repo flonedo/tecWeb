@@ -58,6 +58,58 @@
                   return $error;
                   
               }
+            
+              public function verifyChange($psw, $psw1, $city, $prov, $email, $tel){
+                $error = "";
+                if($psw != $psw1 ){ 
+                     $error = $error."- La password e la conferma devono essere uguali! <br/>";
+                }
+                if(strlen($psw)>12){
+                      $error = $error."- Password troppo lunga! <br/>";
+                }
+                if(strlen($city)==0){
+                      $error = $error."- Citt&agrave; richiesta! <br/> ";
+                }
+                if(strlen($prov)==0){
+                      $error = $error."- Provincia richiesta! <br/>";
+                }
+                if(strlen($email)==0){
+                      $error = $error."- Email richiesta! <br/>";
+                }
+                if(!strpos($email, "@")){
+                      $error = $error."- Email non valida! <br/>";
+                 }
+                  
+                return $error;
+                
+              }
+            
+            public function acceptChanges($psw, $city, $prov, $email, $tel, $user){
+                    require_once 'connectDB.php';
+                    $reg = new connectDB();
+                    $openConnection = $reg -> accessDB();
+                    if(!$openConnection){
+                        die("Errore nell'aprire il database");
+                    }
+                    $connection = $reg -> getConnection();
+                    
+                    if($tel==""){
+                       $tel= NULL;
+                    }
+                
+                $query="UPDATE utente SET password=\"$psw\", citta=\"$city\", provincia=\"$prov\", email=\"$email\", numeroTelefono=\"$tel\" WHERE username=\"$user\";";
+                $result = $connection -> query($query);
+                if($result){
+                    $reg->closeConnection();
+                    return true;
+                }
+                else{
+                    $reg -> closeConnection();
+                    return false;
+                }
+                
+            }
+            
               //Ritorna tue se è stato inserito correttamente
               public function acceptUser($user, $password, $nome, $cognome, $citta, $provincia, $email, $tel){   
                     //Vado a creare una connessione
