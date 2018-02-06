@@ -3,8 +3,7 @@
     	//questa funzione mi da tutte le informazioni riguardanti il libro TRANNE i generi a lui associati in quanto 
     	public function getInfoLibro($connection, $codiceLibro){
         	//la query che devo andare a fare è la seguente
-            $query = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
-			$queryConGenere = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN genereLibro gl ON c.codiceLibro = gl.codiceLibro JOIN genere g ON gl.idGenere=g.id JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
+            $query = 'SELECT DISTINCT c.ISBN, u.nome, u.cognome, c.codiceLibro, c.prezzo, c.stato, c.note, l.titolo, l.autore, l.casaEditrice, l.annoPubblicazione, u.username, u.citta, c.foto FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
             //Provo ad andare ad eseguire la query
             $risultato = mysqli_query($connection, $query) or die("Non è stato possibile trovare le informazioni, ci scusiamo per il diagio");
             if(mysqli_num_rows($risultato)>0){ 
@@ -13,6 +12,7 @@
                	$output = array("ISBN" => $row["ISBN"],
                     					 "nome" => $row["nome"],
                                          "cognome" => $row["cognome"],
+                                         "codiceLibro" => $row["codiceLibro"],
                                          "prezzo" => $row["prezzo"],
                                          "stato" => $row["stato"],
                                          "note" => $row["note"],
@@ -31,6 +31,23 @@
             }
         }
         
+        public function getGeneriLibro($connection, $codiceLibro){
+            $queryConGenere = 'SELECT DISTINCT g.nome FROM copiaLibro c JOIN libro l ON c.ISBN=l.ISBN JOIN genereLibro gl ON c.codiceLibro = gl.codiceLibro JOIN genere g ON gl.idGenere=g.id JOIN utente u ON c.proprietario = u.username WHERE c.codiceLibro ='.$codiceLibro;
+            
+            $generi= "";
+            $resultGeneri = mysqli_query($connection, $queryConGenere);
+            if(mysqli_num_rows($resultGeneri)>0){
+                while($row = mysqli_fetch_assoc($resultGeneri)){
+                    //echo $row["nome"];
+                    if(strlen($generi)==0){
+                        $generi= $generi." ".$row["nome"];
+                    }
+                    else{
+                    $generi = $generi.", ".$row["nome"];}
+                }
+            }
+            return $generi;
+        }
         public function getInfoVenditore($username, $connection){
         	$query = "SELECT username, nome, cognome, citta, provincia, email, numeroTelefono FROM utente WHERE username='".$username."'";
             //provo ad andare ad eseguire la query

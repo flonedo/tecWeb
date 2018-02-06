@@ -131,6 +131,7 @@
     $header = str_replace("<!--script-->", "<script type=\"text/javascript\" src=\"functions.js\"></script>", $header);
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Aggiungi Libro", $header);
     $header = str_replace("<!--titolo-->", "Aggiungi Libro - Scambio Libri Vi", $header);
+    $header = str_replace("<!--load-->", "", $header);
     $menu = file_get_contents("menuPaginaPersonale.html");
     $header = str_replace("<!--menu-->", $menu, $header);
     $header = str_replace("<!--sottotitolo-->",$_SESSION["user"], $header);

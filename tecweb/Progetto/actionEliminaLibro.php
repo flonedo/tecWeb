@@ -28,6 +28,7 @@
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Elimina Libro", $header);
+    $header = str_replace("<!--load-->", "", $header);
     $con = file_get_contents("corpo.html");
     $con = str_replace("<!--corpo-->", $output, $con);
     $header = str_replace("<!--titolo-->", "Elimina Libro - Scambio Libri Vi", $header);

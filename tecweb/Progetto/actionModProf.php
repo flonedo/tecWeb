@@ -8,9 +8,10 @@
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Modifica profilo", $header);
+    $header = str_replace("<!--load-->", "", $header);
     $con = file_get_contents("corpo.html");
     $con = str_replace("<!--corpo-->", $output, $con);
-    $header = str_replace("<!--titolo-->", "Aggiungi Libro - Scambio Libri Vi", $header);
+    $header = str_replace("<!--titolo-->", "Modifica Profilo Libro - Scambio Libri Vi", $header);
     $out = $_SESSION["user"];
     $header = str_replace("<!--sottotitolo-->",$out, $header);
     echo $header;

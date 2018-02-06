@@ -7,6 +7,7 @@
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Elimina profilo", $header);
+    $header = str_replace("<!--load-->", "", $header);
     $con = file_get_contents("corpoElProf.html");
     $header = str_replace("<!--titolo-->", "Elimina profilo - Scambio Libri Vi", $header);
     $menu = file_get_contents("menuPaginaPersonale.html");

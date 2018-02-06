@@ -59,6 +59,9 @@
                      if($resultInfo["note"]!=NULL){
                      	$output = $output. '<p id="note" class="info"> <span class="grass"> Note del venditore: </span>'.$resultInfo["note"].'</p>';
                      }
+                //mi faccio sare i generi del libro
+                $generi = $infoL -> getGeneriLibro($connection,$resultInfo["codiceLibro"]);
+                $output = $output.'<p class="info"> <span class="grass"> Generi di appartenenza:</span>'.$generi."</p>";
             }
             else{
             	$output = $output."<p> Non ci sono informazioni da visualizzare </p>";
@@ -68,7 +71,6 @@
         //Vado a prendere 
         $header = file_get_contents("header.html");
         $header = str_replace("<!--script-->", '<script type = "text/javascript" src = "showDetailsBook.js"></script>', $header);
-        $header = str_replace("<!--load-->", 'onload="closeDetails()"', $header);
         $header = str_replace("<!--load-->", 'onload="closeDetails()"', $header);
 		$footer = file_get_contents("footer.html");
 		$header = str_replace("<!--posizione -->", "<a href='index.php'>Home</a> - <a href = 'catalogo.php'>Catalogo </a> - Pagina libro", $header);
