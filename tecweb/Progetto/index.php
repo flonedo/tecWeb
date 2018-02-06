@@ -22,7 +22,7 @@
             	$output = '<ul>';
                 $index = 0;
                 foreach($results as $array){
-                	$output = $output.'<li> <a href="schedaLibro.php?id='.$array["codiceLibro"].'" class="scheda" title="Vai alla scheda del libro"'.$array["titolo"].'">'.$array["titolo"].'</a></li>';
+                	$output = $output.'<li> <a href="schedaLibro.php?id='.$array["codiceLibro"].'" class="scheda" title="Vai alla scheda del libro '.$array["titolo"].'">'.$array["titolo"].'</a></li>';
                 }
                 $output = $output.'</ul>';
             }
@@ -36,12 +36,17 @@
 	$header = str_replace("<!--posizione -->", "Home", $header);
 	if(!isset($_SESSION["user"])){
 		$log = file_get_contents("areaLogin.html");
+        $aiuti = "<a href=\"#logForm\" class=\"aiuti\"> Passa alla login </a>
+                  <a href=\"registrazione.php\" class=\"aiuti\"> Passa alla form di registrazione </a>";
 	}
 	else{
 		$log = '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
                   <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>';
+        $aiuti = "<a href=\"logout.php\" class=\"aiuti\"> Fai il logout </a>
+                 <a href=\"userHome.php\"> Vai alla tua aera personale </a>";
 	}
 	$header = str_replace("<!-- login -->", $log, $header);
+    $header = str_replace("<!--aiuto-->", $aiuti, $header);
     $header = str_replace("<!--load-->", "", $header);
 	$men = file_get_contents("menuIndex.html");
 	$header = str_replace("<!-- menu -->", $men, $header);
