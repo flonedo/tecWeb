@@ -25,12 +25,12 @@
                  $cl=$row['cl'];
                  $title=$row['titolo'];
                  $author=$row['autore'];
-                 $output = $output."<li><input type=\"checkbox\" name=\"$cl\" value=\"del\"> $title di $author</input></li>";
+                 $output = $output."<li><input type=\"checkbox\" name=\"$cl\" value=\"del\"/> $title di $author</li>";
             }
             $output = $output.'</ul><input class="abutt" type="submit" value="Elimina"/> </fieldset> </form>';
         }
     }
-            
+
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Elimina libro", $header);

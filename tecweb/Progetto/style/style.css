@@ -180,9 +180,7 @@ SEZIONE WHERE
 	color:white;
 }
 
-#where p a:hoover{
-	color:white;
-}
+
 
 #where p a:active{
 	color:white;
@@ -208,8 +206,8 @@ SEZIONE menu
 
 #menu ul{
 	list-style-type: none;
-    padding-left:-0.5em;
-    margin-left:-0.5em;
+    padding-left:0em;
+    margin-left:0em;
 }
 
 #menu ul li{
@@ -342,7 +340,6 @@ textarea{
 }
 
 #corpo fieldset{
-	float: center;
     width: 20em;
     margin:auto;
    	padding: 1em;
@@ -372,10 +369,10 @@ textarea{
  }
 .request{
 	color:red;
-    float: inline;
+
 }
 
-#presente{
+.presente{
 	color:red;
     font-size:0.7em;
 }
@@ -533,6 +530,10 @@ button{
 }
 
 #note{
+	margin-bottom:1em;
+}
+
+#noteg{
 	margin-bottom:1em;
 }
 
