@@ -5,7 +5,7 @@
 */
 html{
 	background-color: SteelBlue ;
-       
+
 }
 
 *{
@@ -14,17 +14,17 @@ html{
 }
 
 html, body{
-	max-width: 1024px; 
-	margin: auto; 
-	font-family: Verdana, Arial, Helvetica, sans-serif; 
-	font-size: 100%; 
+	max-width: 1024px;
+	margin: auto;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 100%;
 }
 
 body{
 	background-color: white;
 }
 
-/* 
+/*
 ===============
 SEZIONE HEADER
 ===============
@@ -54,11 +54,24 @@ font-size: 0.7em;
     width:6em;
 }
 
+#loginForm fieldset a{
+	color:white;
+}
+
 #loginForm fieldset {
 	border-color:white;
     margin:0.3em;
     padding:1em;
     background-color: SteelBlue;
+		width:13em;
+}
+
+#logForm fieldset input[type='text']{
+	width:11em;
+}
+
+#logForm fieldset input[type='password']{
+	width:11em;
 }
 
 #loginForm legend{
@@ -96,7 +109,7 @@ font-size: 0.7em;
 #titolo h2{
 	font-size: 1.5em;
 	font-style: italic;
-	font-weight: normal; 
+	font-weight: normal;
     display:block;
     float:left;
 }
@@ -134,7 +147,7 @@ SEZIONE WHERE
     display: block;
     padding: 0.5em;
     margin-top: 1.5em;
-    
+
 }
 
 #errore{
@@ -152,7 +165,7 @@ SEZIONE WHERE
 	padding: 0.5em;
 	color:white;
 	font-size: 1.0em;
-    
+
 }
 
 #where p{
@@ -164,7 +177,7 @@ SEZIONE WHERE
 }
 
 #where p a:visited{
-	color:gray;
+	color:white;
 }
 
 #where p a:hoover{
@@ -382,7 +395,7 @@ textarea{
 }
 #dlContact{
 	padding: 1em;
-    
+
 }
 
 #dlContact dt{
@@ -402,7 +415,7 @@ textarea{
 #profilo fieldset legend{
 	color: red;
     font-size: 2em;;
-    
+
 }
 
 #profilo fieldset button{
@@ -564,12 +577,12 @@ button{
     width: 90%;
     display: block;
     margin: auto;
-  
+
 }
 
 #addBookForm input{
     width:95%;
-   
+
 }
 
 #addBookForm input[type="checkBox"]{
@@ -601,7 +614,7 @@ button{
 }
 
 #elim{
-    margin-top: 1em; 
+    margin-top: 1em;
 }
 #aDett{
     display: none;
@@ -623,7 +636,7 @@ SEZIONE FOOTER
 
 #imgValidCode{
 		float: left;
-		
+
 }
 
 #imgValidCSS{
