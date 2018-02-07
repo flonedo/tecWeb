@@ -12,7 +12,7 @@
             $connection = $log -> getConnection();
             //Vado ad includere i file dove sono contenute le funzioni per verificare se un utente è valido
             require_once "connectLogin.php";
-            //creo il nuovo oggetto 
+            //creo il nuovo oggetto
             $acceptUs = new acceptUser();
         	//Devo innanzitutto verificare che i contenuti siano validi
             $user = $_POST["us"];
@@ -22,7 +22,7 @@
             	header("Location: userHome.php");
        		}
             else{
-            	$output = $output.'<p> Non sei registrato! <a href="registrazione.php"> Registrati</a>! <br/> Oppure torna alla <a href="index.php"> Home </a> </p>';
+            	$output = $output.'<p> Nome utente o password errati! <a href="registrazione.php"> Registrati</a>! <br/> Oppure torna alla <a href="index.php"> Home </a> </p>';
             }
         }
       //Una volta completate tutte le operazioni devo sloggarmi dal database
