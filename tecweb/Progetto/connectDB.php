@@ -1,9 +1,9 @@
-<?php 
+<?php
 	 class connectDB{
-          const HOST_DB="127.0.0.1";
-          const USERNAME="localhost";
-          const PASSWORD="localhost";
-          const DATABASE_NAME="my_scambiolibrivi";
+          const HOST_DB="localhost";
+          const USERNAME="flonedo";
+          const PASSWORD="Ahn1eer3pook9Kee";
+          const DATABASE_NAME="flonedo";
 
           public $connessione;
 

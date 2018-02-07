@@ -13,8 +13,8 @@
 
       public function estraiTitoli($connection, $id){
         $query = "SELECT c.codiceLibro, l.titolo, l.autore, l.casaEditrice
-        FROM copiaLibro c
-        JOIN genereLibro g ON (c.codiceLibro=g.codiceLibro)
+        FROM copialibro c
+        JOIN generelibro g ON (c.codiceLibro=g.codiceLibro)
         JOIN libro l ON (c.ISBN=l.ISBN)
         WHERE g.idGenere=".$id;
         $sql = mysqli_query($connection, $query);

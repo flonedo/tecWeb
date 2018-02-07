@@ -9,12 +9,12 @@
   xhttp.send();
   return risposta;
  }
- 
+
  //Funzione AJAX per richiedere al database se l'user inserito è gia presente o no
  function showIsPossible(str){
-    if (str.length == 0) { 
+    if (str.length == 0) {
       document.getElementById("presente").innerHTML = "";
-       document.getElementById("aiutoUsername").style.display="none";  
+       document.getElementById("aiutoUsername").style.display="none";
       return;
     }
  	var xmlhttp = new XMLHttpRequest();
@@ -25,7 +25,7 @@
             //devo attivare l'aiuto alla navigazione
             document.getElementById("aiutoUsername").style.display="block";
         }
-      	
+
     }
   };
   xmlhttp.open("GET", "register.php?q=" +str , true);
@@ -102,7 +102,7 @@ function checkProv(provincia){
 		mostraErrore(provincia, "Provincia non valida");
 		return false;
 	}
-     
+
 }
 
 function checkEmail(email){
@@ -121,7 +121,7 @@ function checkEmail(email){
 		mostraErrore(email, "Formato della mail non è valido");
 		return false;
 	}
-     
+
 }
 
 function checkTel(telefono){
@@ -130,7 +130,7 @@ function checkTel(telefono){
         togliErrore(telefono);
         return true;
     }
-    var pattern = new RegExp("/^(d{10})+$/");
+    var pattern = new RegExp("[0-9]");
     if(pattern.test(tel)){
         togliErrore(telefono);
         return true;
@@ -139,7 +139,7 @@ function checkTel(telefono){
         mostraErrore(telefono, "Formato del numero di telefono non è corretto!")
         return false;
     }
-    
+
 }
 
 function checkPassword(password){
@@ -160,7 +160,7 @@ function checkPassword(password){
 
 function mostraErrore(input, testo){
 	togliErrore(input);
-	var p = input.parentNode; //recupero il nodo padre 
+	var p = input.parentNode; //recupero il nodo padre
 	var e = document.createElement("strong"); //creo un nuovo elemento
 	e.className = "err"; //assegno una classe
 	e.appendChild(document.createTextNode(testo)); //crea un nodo di testo con questo testo
@@ -185,8 +185,8 @@ function togliErrore(input){
     var em = document.forms["registerForm"]["em"];
     var tel = document.forms["registerForm"]["tel"];
     var pass = document.forms["registerForm"]["psw"];
-    
-    
+
+
     var correct = checkNome(nome);
     var correctCog = checkCognome(cognome);
     var correctCity = checkCity(citt);
@@ -194,7 +194,7 @@ function togliErrore(input){
     var correctEmail = checkEmail(em);
     var correctTel = checkTel(tel);
     var correctPassword = checkPassword(pass);
-     
+
    correct = correct && correctCog && correctCity && correctProv && correctEmail && correctTel && correctPassword;
 
      return correct;
@@ -222,15 +222,15 @@ function ceckModForm(){
     var provincia = document.forms["registerForm"]["prov"];
     var email = document.forms ["registerForm"]["em"];
     var tel = document.forms["registerForm"] ["tel"];
-    
+
     var correct = ceckSamePassword(pass1, pass2);
     var correctCity = checkCity(citta);
     var correctProv = checkProv(provincia);
     var correctEmail = checkEmail(email);
     var correctTel = checkTel(tel);
-    
+
     correct = correctCity && correct && correctProv && correctEmail && correctTel;
-    
+
     return correct;
 }
 
@@ -262,7 +262,7 @@ function checkIsbn(isbn) {
         mostraErrore(isbn, "Il codice ISBN è richiesto");
          return false;
     }
-    var pattern = new RegExp("([0-9]){13}/g");
+    var pattern = new RegExp("([0-9]){13}");
     if(pattern.test(tmp)){
         togliErrore(isbn);
         return true;
@@ -307,7 +307,7 @@ function checkYear(year) {
             mostraErrore(year, "Inserire un numero");
              return false;
         }
-        if(number > (new Date()).getFullYear() || number) {
+        if(number > (new Date()).getFullYear()) {
             mostraErrore(year, "Il numero non è valido");
             return false;
         }
@@ -347,7 +347,7 @@ function checkKind(kind) {
         return false;
     }
     togliErrore(kind[0]);
-    return true;  
+    return true;
 }
 function checkState(state){
     var tmp=state.value;
@@ -368,7 +368,7 @@ function checkPhoto() {
         } else {
             mostraErrore(file, "Selezionare un file con estensione .jpg o .jpg");
             return false;
-        } 
+        }
     }
     togliErrore(file);
     return true;

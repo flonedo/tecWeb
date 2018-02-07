@@ -6,8 +6,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `my_scambiolibrivi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `my_scambiolibrivi`;
+USE `flonedo`;
 
 DROP TABLE IF EXISTS `copialibro`;
 CREATE TABLE IF NOT EXISTS `copialibro` (

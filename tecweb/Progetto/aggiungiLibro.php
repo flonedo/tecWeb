@@ -54,7 +54,7 @@
                 if(!(is_numeric($year)) || (int)$year > date("Y")) {
                     $output=$output."L'anno non è valido</br>";
                     $allOk=false;
-                } 
+                }
             }else{
                 $year="NULL";
             }
@@ -67,7 +67,7 @@
                 if(count($kinds)>3) {
                     $output=$output."Selezionare al massimo 3 generi</br>";
                     $allOk=false;
-                }  
+                }
             }else{
                 $output=$output."Selezionare almeno un genere</br>";
                 $allOk=false;
@@ -106,10 +106,10 @@
                 else
                     $note="NULL";
                 $query="INSERT INTO `libro` VALUES('$title', '$author', '$editor', '$isbn', $year);";
-                    
+
                 $connessione->query("INSERT INTO `libro` VALUES('$title', '$author', '$editor', '$isbn', $year);");
-                    
-                $r=$connessione->query("INSERT INTO `copiaLibro` (`ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES('$isbn', '$user', $price, '$state', $note, 'noImage.jpg');");
+
+                $r=$connessione->query("INSERT INTO `copialibro` (`ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES('$isbn', '$user', $price, '$state', $note, 'noImage.jpg');");
                 $id = $connessione->insert_id;
                 foreach($kinds as $kind) {
                     $connessione->query("INSERT INTO `generelibro` VALUES('$id','$kind');");
@@ -118,7 +118,7 @@
                     $target_dir = "photo/";
                     $target_file = $target_dir.$id.".jpg";
                     move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
-                    $r=$connessione->query("UPDATE `copiaLibro` SET foto= '$id.jpg' WHERE codiceLibro='$id';");
+                    $r=$connessione->query("UPDATE `copialibro` SET foto= '$id.jpg' WHERE codiceLibro='$id';");
                 }
                 $output = $output."Il libro &egrave stato inserito correttamente</br>";
             }

@@ -9,7 +9,7 @@
 
 
 \title{ScambioLibriVI}
-\author{Luca Allegro \and Marco Giollo \and Francesca Lonedo}
+\author{Luca Allegro 1120573 \and Marco Giollo 1122414 \and Francesca Lonedo 1125508}
 \date{\today}
 
 
@@ -28,6 +28,11 @@
 				Autori & Luca Allegro \newline Marco Giollo \newline Francesca Lonedo \\
 				\\
 				Professori & Lamberto Ballan \newline Matteo Ciman \newline Ombretta Gaggi  \\
+				\\
+				Sito & \url{http://tecweb2016.studenti.math.unipd.it/flonedo/} \\
+				\\
+				E-mail & marco.giollo@studenti.unipd.it \newline scambiolibrivi@gmail.com \\
+				\\
 			\end{tabular}\\[3 em]
 			\vfill
 			{\large \@date}
@@ -52,7 +57,7 @@
 \section{Introduzione}
 	\subsection{Cos'è ScambioLibriVI}
 		\textit{ScambioLibriVI} è una piattaforma web pensata per la compravendita di libri usati tra privati. \\
-		Poiché le elevate spese di spedizione rendono spesso inconveniente l'acquisto dell'usato rispetto al nuovo, con \textit{ScambioLibriVI} si è deciso di abbandonare il classico concetto di e-Commerce: il sito vuole infatti essere una bacheca degli annunci per mettere in contatto venditori e acquirenti, che dovranno accordarsi autonomamente sulle modalità di scambio. Sebbene gli utenti siano in totale libertà, lo spirito dell'applicazione è quello di favorire lo passaggio "a mano" dei prodotti in quanto sicuro, conveniente ed ecologico.
+		Poiché le elevate spese di spedizione rendono spesso inconveniente l'acquisto dell'usato rispetto al nuovo, con \textit{ScambioLibriVI} si è deciso di abbandonare il classico concetto di e-Commerce: il sito vuole infatti essere una bacheca degli annunci per mettere in contatto venditori e acquirenti, che dovranno accordarsi autonomamente sulle modalità di scambio. Sebbene gli utenti siano in totale libertà, lo spirito dell'applicazione è quello di favorire il passaggio "a mano" dei prodotti in quanto sicuro, conveniente ed ecologico.
 	\subsection{L'idea di base}
 	La compravendita di libri usati è attualmente un'attività difficile; sebbene esistano piattaforme che offrano tale servizio, questo è spesso limitato. L'offerta attualmente disponibile include:
 	\begin{itemize}
@@ -63,7 +68,7 @@
 	E' in questo contesto che si inserisce \textit{ScambioLibriVI}, una piattaforma gratuita che si offre di mettere in contatto gli utenti interessati a scambiare libri.
 \section{Progettazione}
 	\subsection{Requisiti}
-		La piattaforma prevede tre categorie di utenti, che hanno accesso a differenti funzionalità.
+		La piattaforma prevede due categorie di utenti, che hanno accesso a differenti funzionalità.
 		\subsubsection{Visitatore}
 		Un visitatore del sito ha accesso alle seguenti funzionalità
 				\begin{itemize}
@@ -76,7 +81,7 @@
 							\item inserimento città;
 							\item inserimento provincia;
 							\item inserimento indirizzo e-mail;
-							\item inserimento numero di telefono.
+							\item inserimento numero di telefono facoltativo.
 						\end{itemize}
 					\item consultazione del catalogo;
 					\item visualizzazione dei dettagli relativi a un libro:
@@ -88,6 +93,8 @@
 							\item casa editrice;
 							\item anno di pubblicazione;
 							\item zona di ritiro del libro;
+							\item generi di appartenenza;
+							\item eventuale immagine di copertina;
 							\item informazioni sul venditore:
 								\begin{itemize}
 									\item username;
@@ -95,8 +102,10 @@
 									\item cognome;
 									\item città;
 									\item provincia;
+									\item numero di telefono, se presente;
+									\item contatto diretto via e-mail;
 								\end{itemize}
-							\item contatto diretto via e-mail;
+							
 						\end{itemize}
 				\end{itemize}		
 		\subsubsection{Utente registrato}
@@ -119,7 +128,7 @@
 							\item inserimento casa editrice;
 							\item inserimento anno di pubblicazione;
 							\item inserimento prezzo;
-							\item selezione del genere;
+							\item selezione dei generi di appartenenza (massimo 3);
 							\item selezione dello stato di usura;
 							\item inserimento di note aggiuntive;
 							\item caricamento di un'immagine;
@@ -150,19 +159,29 @@
 		\subsubsection{Pagine web}
 			Per la realizzazione di  \textit{ScambioLibriVi} sono stati utilizzati \textit{XHTML}, \textit{CSS3}, \textit{PHP} e \textit{JavaScript}. \\
 			Le pagine vengono realizzate dinamicamente, in modo da poter riutilizzare tutte le porzioni di codice condivise come \textit{header}, \textit{footer}, \textit{login}, \textit{menu} ecc; questo ha permesso di ridurre il peso complessivo del sito e facilità notevolmente le attività di manutenzione. Ad essere creato dinamicamente mediante l'utilizzo di codice \textit{PHP} è anche il contenuto richiesto dall'utente, tramite chiamate al database.
-			\\ La grafica del sito è gestita interamente in \textit{CSS3}; sono resi disponibili tre fogli di stile che forniscono il supporto alla consultazione tramite dispositivi desktop e mobile;un ulteriore foglio di stile è dedicato alla stampa. 
-			\\ L'utilizzo di codice \textit{JavaScript} è ridotto al minimo per garantire il più alto grado di accessibilità raggiungibile. E' stata prestata particolare attenzione a permettere la navigazione del sito anche da dispositivi che non supportino \textit{JavaScript}; in particolare il sito è accessibile anche mediante l'utilizzo di \textit{screen readers}.
+			\\ La grafica del sito è gestita interamente in \textit{CSS3}; sono resi disponibili tre fogli di stile che forniscono il supporto alla consultazione tramite dispositivi desktop e mobile; un ulteriore foglio di stile è dedicato alla stampa. 
+			\\ L'utilizzo di codice \textit{JavaScript} è ridotto al minimo per garantire il più alto grado di accessibilità raggiungibile. E' stata prestata particolare attenzione a permettere la navigazione del sito anche da dispositivi che non supportino \textit{JavaScript}; in particolare il sito è accessibile anche mediante l'utilizzo di \textit{screen readers}, quali il lettore integrato di \textit{Microsoft Edge}.
 			\\ Grazie a questi accorgimenti vi è una totale divisione tra il contenuto (XHTML), la sua presentazione (CSS3) e il suo comportamento (PHP).
 			
 		\subsubsection{Accessibilità}
 		E' stata curata in dettaglio l'accessibilità del sito da parte di tutte le categorie di utenti, tra cui i diversamente abili. In particolare sono stati presi i seguenti accorgimenti:
 			\begin{itemize}
 				\item inserimento di ausili alla navigazione;
-				\item riduzione al minimo dell'utilizzo di \textit{JavaScript} e degradazione elegante e completa di tutte le funzionalità qualora non disponibile; per come è stato utilizzato, \textit{JavaScript} non influisce negativamente sulla performance degli \textit{screen readers};
+				\item riduzione al minimo dell'utilizzo di \textit{JavaScript} e trasformazione elegante e completa di tutte le funzionalità qualora non disponibile; per come è stato utilizzato, \textit{JavaScript} non influisce negativamente sulla performance degli \textit{screen readers};
 				\item dichiarazione di span di lingua per facilitare la lettura del contenuto tramite \textit{screen reader}; per ovvi motivi, non è possibile garantire la corretta lettura dei contenuti inseriti dagli utenti, che verranno sempre letti con pronuncia italiana;
 				\item è stato completamente evitato l'utilizzo di tabelle per la strutturazione del contenuto; sono stati invece utilizzati elenchi puntati, meglio gestiti dagli \textit{screen reader};
-				\item il contenuto è totalmente separato dalla sua presentazione, gestita tramite \textit{CSS}; sono forniti due fogli di stile per adattare il sito alla visualizzazione tramite dispositivi desktop e mobile ed è definito un ulteriore foglio per la stampa; il sito è pienamente utilizzabile anche senza presentazione \textit{CSS}.
+				\item il contenuto è totalmente separato dalla sua presentazione, gestita tramite \textit{CSS}; sono forniti due fogli di stile per adattare il sito alla visualizzazione tramite dispositivi desktop e mobile ed è definito un ulteriore foglio per la stampa; il sito è pienamente utilizzabile anche senza presentazione \textit{CSS};
+				\item scelta di una palette di colori a contrasto elevato per garantire l'accessibilità ad utenti affetti da daltonismo.
 			\end{itemize}
+		\textit{ScambioLibriVi} è validato XHTML strict secondo lo standard del W3C; anche lo stile CSS è validato W3C.
+		\\
+		Riportiamo in seguito i risultati dei test di simulazione del daltonismo, eseguiti tramite il tool fornito da \url{http://www.vischeck.com}: \\
+		\\
+		\includegraphics[height=4 cm]{cb1.jpg}\\[3em]
+		\includegraphics[height=4 cm]{cb2.jpg}\\[3em]
+		\includegraphics[height=4 cm]{cb2.jpg}\\[3em]
+			
+			
 		\subsubsection{Usabilità}
 		Il sito è stato reso semplice ed intuitivo in modo da permetterne l'utilizzo alle più varie categorie di utenti appassionate di lettura e questo ha ridotto il numero di funzionalità che è stato deciso di rendere disponibile. \\ 
 		Lo scopo di \textit{ScambioLibriVi} è quello di invogliare gli utenti a scoprire qualcosa di nuovo e aiutare appassionati a scambiare libri tra di loro, e non vuole in alcun modo sostituire una tradizionale libreria o e-commerce.
@@ -187,19 +206,23 @@
 			\end{itemize}
 		\item PHP:
 			\begin{itemize}
-				\item area utente: \textbf{Luca Allegro} Marco Giollo;
+				\item area utente: \textbf{Luca Allegro}, Marco Giollo;
 				\item scheda libri: \textbf{Marco Giollo}, Francesca Lonedo;
 				\item catalogo: \textbf{Francesca Lonedo};
 				\item funzioni e chiamate al database: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
 			\end{itemize}
-		\item JavaScript: \textbf{Marco Giollo}, Francesca Lonedo;
+		\item JavaScript: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
 		\item Fogli di stile CSS:
 			\begin{itemize}
 				\item desktop: Luca Allegro, \textbf{Marco Giollo}, Francesca Lonedo;
 				\item mobile: \textbf{Francesca Lonedo};
 				\item stampa: \textbf{Luca Allegro};
 			\end{itemize}
-		\item
+		
 		\item Relazione: \textbf{Francesca Lonedo};
+		\item Test: Luca Allegro, Marco Giollo, Francesca Lonedo.
 	\end{itemize}
+
+\section{Caricamento}
+	Il sito web è disponibile all'indirizzo \url{http://tecweb2016.studenti.math.unipd.it/flonedo/}. Le credenziali di accesso all'area riservata sono username: user; password: user. E' comunque possibile aggiungere nuovi utenti a discrezione.
 \end{document}

@@ -18,13 +18,13 @@
                     $photo="photo/$key.jpg";
                     if(file_exists($photo))
                         unlink($photo);
-                    $r=$connection->query("DELETE FROM genereLibro WHERE codiceLibro=$key;");
-                    $r=$connection->query("DELETE FROM copiaLibro WHERE codiceLibro=$key;");
+                    $r=$connection->query("DELETE FROM generelibro WHERE codiceLibro=$key;");
+                    $r=$connection->query("DELETE FROM copialibro WHERE codiceLibro=$key;");
                 }
             $output = $output."I libri sono stati eliminati <br/> <a href=\"userHome.php\"> Torna alla tua area personale </a>";
         }
         $reg -> closeConnection();
-    
+
     $header = file_get_contents("headerPaginapersonale.html");
     $footer = file_get_contents("footer.html");
     $header = str_replace("<!--posizione -->", "<a href='index.php'> Home </a> - <a href='userHome.php'>Area personale </a> - Elimina Libro", $header);

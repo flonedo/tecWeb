@@ -1,8 +1,5 @@
-CREATE DATABASE IF NOT EXISTS my_scambiolibrivi
-  DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;
-  
-USE my_scambiolibrivi;
+
+USE flonedo;
 
 DROP TABLE IF EXISTS genereLibro, libro, copiaLibro, genere, utente;
 
@@ -117,36 +114,7 @@ INSERT INTO `libro` (`titolo`, `autore`, `casaEditrice`, `ISBN`, `annoPubblicazi
 
 -- --------------------------------------------------------
 
-
---
--- Struttura della tabella `genereLibro`
---
-
-CREATE TABLE IF NOT EXISTS `genereLibro` (
-  `codiceLibro` int(11) NOT NULL,
-  `idGenere` int(11) NOT NULL,
-  PRIMARY KEY (`codiceLibro`,`idGenere`),
-  FOREIGN KEY (idGenere) REFERENCES genere(id) ON DELETE CASCADE,
-  FOREIGN KEY(codiceLibro) REFERENCES copiaLibro(codiceLibro) ON DELETE CASCADE;
-) ;
-
---
--- Elementi dei dati per la tabella `genereLibro`
---
-
-INSERT INTO `genereLibro` (`codiceLibro`, `idGenere`) VALUES
-(1, 23),
-(2, 23),
-(3, 6),
-(3, 23),
-(4, 3),
-(4, 23),
-(5, 3),
-(6, 8);
-
--- --------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `copiaLibro` (
+CREATE TABLE IF NOT EXISTS `copialibro` (
   `codiceLibro` int(11) NOT NULL AUTO_INCREMENT,
   `ISBN` varchar(13)  NOT NULL,
   `proprietario` varchar(20)  NOT NULL,
@@ -157,13 +125,10 @@ CREATE TABLE IF NOT EXISTS `copiaLibro` (
   PRIMARY KEY (`codiceLibro`),
   FOREIGN KEY(ISBN) REFERENCES libro(ISBN) ON DELETE NO ACTION,
   FOREIGN KEY(proprietario) REFERENCES utente(username) ON DELETE CASCADE
-); 
+  ); 
 
---
--- Dati dei dati per la tabella `copiaLibro`
---
 
-INSERT INTO `copiaLibro` (`codiceLibro`, `ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES
+INSERT INTO `copialibro` (`codiceLibro`, `ISBN`, `proprietario`, `prezzo`, `stato`, `note`, `foto`) VALUES
 (1, '9788804552246', 'Marco96', 8.50, 'Come nuovo', 'Consigliato agli appassionati del Medioevo', 'noImage.jpg'),
 (2, '9788845278655', 'Marco96', 5.00, 'Lievi segni di usura', 'Imperdibile dopo aver visto il film.', 'noImage.jpg'),
 (3, '9788845272400', 'Luca', 5.50, 'Come nuovo', NULL, 'noImage.jpg'),
@@ -175,6 +140,34 @@ INSERT INTO `copiaLibro` (`codiceLibro`, `ISBN`, `proprietario`, `prezzo`, `stat
 -- --------------------------------------------------------
 
 
+CREATE TABLE IF NOT EXISTS `generelibro` (
+  `codiceLibro` int(11) NOT NULL,
+  `idGenere` int(11) NOT NULL,
+  PRIMARY KEY (`codiceLibro`,`idGenere`),
+  FOREIGN KEY(codiceLibro) REFERENCES copialibro(codiceLibro) ON DELETE CASCADE,
+  FOREIGN KEY (idgenere) REFERENCES genere (id) 
+) ;
+
+--
+-- Elementi dei dati per la tabella `genereLibro`
+--
+
+INSERT INTO `generelibro` (`codiceLibro`, `idGenere`) VALUES
+(1, 23),
+(2, 23),
+(3, 6),
+(3, 23),
+(4, 3),
+(4, 23),
+(5, 3),
+(6, 8);
+
+-- --------------------------------------------------------
+
+
+
+--
+--
 
 
 
