@@ -40,10 +40,10 @@
                   <a href=\"registrazione.php\" class=\"aiuti\"> Passa alla form di registrazione </a>";
 	}
 	else{
-		$log = '<a class="abutt" id="aPers" href="userHome.php" title="Vai alla tua pagina personale"> Pagina Personale </a> </br>
+		$log = '<a class="abutt" id="aPers" href="userHome.php"> Pagina Personale </a> </br>
                   <a class="abutt" id="logout" href="logout.php" title="Esci"> Logout </a>';
         $aiuti = "<a href=\"logout.php\" class=\"aiuti\"> Fai il logout </a>
-                 <a href=\"userHome.php\"> Vai alla tua aera personale </a>";
+                 <a href=\"userHome.php\" class=\"aiuti\"> Vai alla tua atea personale </a>";
 	}
 	$header = str_replace("<!-- login -->", $log, $header);
     $header = str_replace("<!--aiuto-->", $aiuti, $header);
