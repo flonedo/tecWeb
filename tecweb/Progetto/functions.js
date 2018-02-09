@@ -302,9 +302,9 @@ function checkEditor(editor) {
 function checkYear(year) {
    var tmp=year.value.trim();
     if(tmp.length>0){
-        var pattern = new RegExp("^[0-9]$");
+        var pattern = new RegExp("^([0-9])*$");
         if(!pattern.test(tmp)) {
-            mostraErrore(year, "L'anno &eacute; deve essere un numero");
+            mostraErrore(year, "L'anno deve essere un numero");
             return false;
         }
         var number = parseInt(tmp);
@@ -313,7 +313,7 @@ function checkYear(year) {
              return false;
         }
         if(number > (new Date()).getFullYear()) {
-            mostraErrore(year, "L'Anno non &eacute; valido");
+            mostraErrore(year, "L'Anno non è valido");
             return false;
         }
     }
@@ -326,7 +326,7 @@ function checkPrice(price) {
         mostraErrore(price, "Il prezzo è obbligatorio");
         return false;
     }
-    var pattern = new RegExp("^[0-9]+(\.\[0-9]{1,2})?$");
+    var pattern = new RegExp("^([0-9])+(\.([0-9]){1,2})?$");
     if(!pattern.test(pr)) {
         mostraErrore(price, "Inserire un prezzo valido: usare il punto come separatore e massimo 2 cifre decimali");
         return false;

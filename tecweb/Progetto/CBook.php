@@ -170,6 +170,7 @@
         function setPhoto() {
             $errore="";
             if(file_exists($_FILES['photo']['tmp_name'])) {
+                echo "foto esiste";
                 // Allow only jpg
                 $allowed =  array('jpeg' ,'jpg');
                 $ext = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
@@ -180,7 +181,7 @@
                 } else if ($_FILES["photo"]["size"] > 2000000) {
                     $errore="La dimensione massima &egrave; 2 MB. Prova con un file di dimensione inferiore<br/>";
                 } else
-                    $photo=true;
+                    $this->photo=true;
             }
             return $errore;
         }
