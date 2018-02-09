@@ -33,7 +33,7 @@
 }
 
 function checkNome(nome){
-	var nomeInserito = nome.value;
+	var nomeInserito = nome.value.trim();
     if(nomeInserito.length == 0){
         mostraErrore(nome, "Il nome è richiesto");
          return false;
@@ -51,7 +51,7 @@ function checkNome(nome){
 }
 
 function checkCognome(cognome){
-	var cog = cognome.value;
+	var cog = cognome.value.trim();
     if(cog.length == 0){
         mostraErrore(cognome, "Il cognome è richiesto");
          return false;
@@ -69,7 +69,7 @@ function checkCognome(cognome){
 }
 
 function checkCity(citta){
-	var city = citta.value;
+	var city = citta.value.trim();
     if(city.length == 0){
         mostraErrore(citta, "La città è richiesta");
          return false;
@@ -87,7 +87,7 @@ function checkCity(citta){
 }
 
 function checkProv(provincia){
-	var prov = provincia.value;
+	var prov = provincia.value.trim();
     if(prov.length == 0){
         mostraErrore(provincia, "La provincia è richiesta");
          return false;
@@ -125,7 +125,7 @@ function checkEmail(email){
 }
 
 function checkTel(telefono){
-    var tel = telefono.value;
+    var tel = telefono.value.trim();
     if(tel.length==0){
         togliErrore(telefono);
         return true;
@@ -257,12 +257,12 @@ function ceckModForm(){
  }
 
 function checkIsbn(isbn) {
-    var tmp = isbn.value;
+    var tmp = isbn.value.replace(/ /g,'');
     if(tmp.length==0){
         mostraErrore(isbn, "Il codice ISBN è richiesto");
          return false;
     }
-    var pattern = new RegExp("([0-9]){13}");
+    var pattern = new RegExp("^([0-9]){13}$");
     if(pattern.test(tmp)){
         togliErrore(isbn);
         return true;
@@ -273,7 +273,7 @@ function checkIsbn(isbn) {
     }
 }
 function checkTitle(title) {
-    var ti=title.value;
+    var ti=title.value.trim();
     if(ti.length==0){
         mostraErrore(title, "Il titolo è richiesto");
         return false;
@@ -282,7 +282,7 @@ function checkTitle(title) {
     return true;
 }
 function checkAuthor(author) {
-    var au=author.value;
+    var au=author.value.trim();
     if(au.length==0){
         mostraErrore(author, "L'autore è richiesto");
          return false;
@@ -291,7 +291,7 @@ function checkAuthor(author) {
     return true;
 }
 function checkEditor(editor) {
-    var tmp=editor.value;
+    var tmp=editor.value.trim();
     if(tmp.length==0) {
         mostraErrore(editor, "Inserire l'editore");
         return false;
@@ -300,34 +300,35 @@ function checkEditor(editor) {
     return true;
 }
 function checkYear(year) {
-   var tmp=year.value;
+   var tmp=year.value.trim();
     if(tmp.length>0){
+        var pattern = new RegExp("^[0-9]$");
+        if(!pattern.test(tmp)) {
+            mostraErrore(year, "L'anno &eacute; deve essere un numero");
+            return false;
+        }
         var number = parseInt(tmp);
         if(isNaN(number)) {
             mostraErrore(year, "Inserire un numero");
              return false;
         }
         if(number > (new Date()).getFullYear()) {
-            mostraErrore(year, "Il numero non è valido");
+            mostraErrore(year, "L'Anno non &eacute; valido");
             return false;
         }
     }
     togliErrore(year);
     return true;
 }
-function checkPrice(price){
-    var pr=price.value;
+function checkPrice(price) {
+    var pr=price.value.trim();
     if(pr.length==0) {
         mostraErrore(price, "Il prezzo è obbligatorio");
         return false;
     }
-    var number = parseFloat(pr);
-    if(isNaN(number)){
-        mostraErrore(price, "Inserire un numero");
-        return false;
-    }
-    if(number<0) {
-        mostraErrore(price, "Il prezzo non può essere negativo");
+    var pattern = new RegExp("^[0-9]+(\.\[0-9]{1,2})?$");
+    if(!pattern.test(pr)) {
+        mostraErrore(price, "Inserire un prezzo valido: usare il punto come separatore e massimo 2 cifre decimali");
         return false;
     }
     togliErrore(price);
@@ -346,7 +347,7 @@ function checkKind(kind) {
         mostraErrore(kind[kind.length-1], "Selezionare al massimo 3 generi");
         return false;
     }
-    togliErrore(kind[0]);
+    togliErrore(kind[kind.length-1]);
     return true;
 }
 function checkState(state){
@@ -371,5 +372,5 @@ function checkPhoto() {
         }
     }
     togliErrore(file);
-    return true;
+    return true;	
 }
